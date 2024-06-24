@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const Header = () => {
+ 
+
   return (
-    <header className="flex bg-gray-100 p-4 absolute top-0 left-0 w-full items-center justify-between">
+    <header className="flex bg-gray-100 p-4 absolute top-0 left-0 w-full items-center justify-between h-[70px]">
       <div className="flex items-center justify-around gap-4">
         <img
           src="/logo/1024.png"
@@ -32,9 +34,9 @@ const Header = () => {
           <li>
             <Link
               className="transition hover:text-secondary-dark"
-              to="/MyAccount"
+              to="/my-account"
             >
-              MyAccount
+              My Account
             </Link>
           </li>
         </ul>
