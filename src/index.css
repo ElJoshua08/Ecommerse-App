@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply h-dvh;
+html {
+  height: 100dvh;
 }
 
-#root {
-  @apply h-lvh;
+body {
+  height: 320px;
 }
