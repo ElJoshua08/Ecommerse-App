@@ -19,7 +19,6 @@ const Card = ({ item }) => {
       )
     );
 
-
   return (
     // Card
     <div className="flex flex-row items-center justify-between bg-gray-200 w-5/12 min-w-96 h-48 rounded-lg flex-shrink-0 flex-grow shadow-md hover:shadow-2xl transition-shadow duration-300 ease-in-out cursor-pointer">
@@ -36,16 +35,28 @@ const Card = ({ item }) => {
       </div>
 
       {/* Card Content */}
-      <div className="flex flex-grow flex-col justify-start items-start gap-2 text-center h-12 overflow-hidden">
+      <div className="flex flex-grow flex-col justify-start items-start text-center overflow-hidden h-full p-2 relative">
         {/* Card Title */}
-        <h1 className="text-sm font-bold max-w-[70ch] text-wrap text-ellipsis overflow-hidden text-left ml-2">
+        <h1 className="text-md font-semibold text-wrap text-ellipsis overflow-hidden text-left leading-tight h-fit max-h-[2lh]">
           {item.title}
         </h1>
         {/* Card Rate and Count */}
         <div className="flex flex-row justify-center gap-1 items-center">
           {stars}
-          <span className='text-sm text-gray-500'>{item.rating.count} reviews</span>
+          <p className="text-sm text-gray-500 flex items-center h-full">
+            {item.rating.count} reviews
+          </p>
         </div>
+
+        {/* Price*/}
+        <p className="text-sm text-gray-500 absolute bottom-2 left-2">
+          {item.price} €
+        </p>
+
+        {/* Add to cart button */}
+        <button className="bg-primary-dark text-white rounded-lg px-4 py-2 text-sm right-[0.6rem] bottom-2 absolute font-semibold">
+          Add to cart
+        </button>
       </div>
     </div>
   );
