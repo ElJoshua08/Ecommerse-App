@@ -2,19 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-body, .App {
-position: absolute;
+body,
+.App,
+#root {
+  position: absolute;
   overflow: hidden;
   min-height: 100vh;
   width: 100%;
   top: 0;
   left: 0;
 }
+
 #root {
-  position: absolute;
   overflow: auto;
-  min-height: 100vh;
-  width: 100%;
-  top: 0;
-  left: 0;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+ 
+
+  &::-webkit-scrollbar-thumb {
+    appearance: none;
+    width: 6px;
+    border-radius: 10px;
+    @apply bg-accent-dark;
+  }
 }
