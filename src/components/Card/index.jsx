@@ -29,7 +29,7 @@ const Card = ({ item }) => {
           src={item.image}
           alt="Product Image"
         />
-        <p className="absolute bottom-1 right-1 z-[10] text-xs text-white bg-slate-700/30 backdrop-blur-md rounded-full px-2 py-1">
+        <p className="absolute bottom-1 right-1 z-[10] text-sm letter text-white bg-slate-700/30 backdrop-blur-md rounded-full px-2 py-1">
           {item.category}
         </p>
       </div>
@@ -47,6 +47,11 @@ const Card = ({ item }) => {
             {item.rating.count} reviews
           </p>
         </div>
+
+        {/* Description */}
+        <p className="text-xs text-gray-500 text-ellipsis overflow-hidden text-left leading-tight mt-1 h-fit max-h-[4lh]">
+          {item.description}
+        </p>
 
         {/* Price*/}
         <p className="text-sm text-gray-500 absolute bottom-2 left-2">
