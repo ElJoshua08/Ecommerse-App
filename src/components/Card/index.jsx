@@ -1,5 +1,4 @@
 import { FaRegStar, FaStar } from 'react-icons/fa';
-import { MdStarOutline } from 'react-icons/md';
 
 const Card = ({ item }) => {
   let rating = Math.floor(item.rating.rate);
