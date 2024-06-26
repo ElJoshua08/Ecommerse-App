@@ -20,28 +20,4 @@ function App() {
   );
 }
 
-// function App() {
-//   return (
-//     <>
-//       <Router>
-//         <Routes>
-//           <Route
-//             path="/"
-//             element={<Home />}
-//           />
-
-//           <Route path="/products" element={<Home />} />
-
-//           <Route path="/product/:id" element={<Home />} />
-
-//           <Route
-//             path="/my-account"
-//             element={<MyAccount />}
-//           />
-//         </Routes>
-//       </Router>
-//     </>
-//   );
-// }
-
 export default App;
