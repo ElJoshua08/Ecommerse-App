@@ -26,7 +26,7 @@ const Header = () => {
           <li>
             <Link
               className="transition hover:text-secondary-dark"
-              to="/Products"
+              to="/products"
             >
               Products
             </Link>
