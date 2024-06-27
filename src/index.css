@@ -6,14 +6,18 @@ body,
 .App,
 #root {
   position: absolute;
-  overflow: hidden;
   min-height: 100vh;
   width: 100%;
   top: 0;
   left: 0;
 }
 
-#root {
+.App {
+  position: relative;
+  overflow: auto;
+}
+
+#root, body, #root {
   overflow: auto;
 
   &::-webkit-scrollbar {

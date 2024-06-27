@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <Router>
         <Header />
-        <div className="flex-grow flex items-center justify-center flex-wrap gap-4 w-full mt-[70px] min-h-screen top-70 relative px-5 py-3">
+        <div className="flex-grow flex items-start justify-center flex-wrap gap-4 w-full mt-[70px] top-70 relative px-5 py-3 mb-14">
           <Routes>
             <Route
               path="/"

@@ -3,7 +3,7 @@ import { FaGithub, FaInstagram } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 mt-5 py-6 rounded-t-xl w-full flex flex-col justify-center items-center">
+    <footer className="bg-gray-100 py-6 rounded-t-xl w-full flex flex-col justify-center items-center absolute bottom-0">
       {/* Author Social Media */}
       <div className="absolute left-2 bottom-2 flex flex-row justify-center items-center gap-3">
         <a
