@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Card from '@/components/Card';
+import { FaStar } from 'react-icons/fa';
 
 const Products = () => {
   const categories = [
@@ -11,6 +12,7 @@ const Products = () => {
   ];
   const [items, setItems] = useState([]);
   const [filter, setFilter] = useState('all');
+  const [ratingFilter, setRatingFilter] = useState(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -23,35 +25,54 @@ const Products = () => {
       setTimeout(() => {
         setItems(data);
         setLoading(false);
-      }, 2000); // 2 seconds delay
+      }, 500); // 500 milliseconds delay
     }
 
     fetchData();
   }, []);
 
   const handleFilter = (category) => {
-    let newFilter = category;
-    console.log(newFilter);
-    setFilter(newFilter);
+    setFilter(category);
   };
+
+  const handleRatingFilter = (minRating) => {
+    setRatingFilter(minRating);
+  };
+
+  const filteredItems = items.filter(
+    (item) =>
+      (filter === 'all' || item.category === filter) &&
+      item.rating.rate >= ratingFilter
+  );
 
   return (
     <>
       {/* Filters */}
-      <div className="flex flex-row justify-left items-center gap-4 h-12 w-full rounded-2xl mb-4">
-        {categories.map((category, index) => (
-          <button
-            key={index}
-            className={`${
-              filter === category
-                ? 'bg-primary text-gray-700'
-                : 'bg-gray-200 text-gray-500 hover:bg-gray-300 hover:text-gray-700'
-            } font-medium text-normal rounded-md px-4 py-2 text-sm transition`}
-            onClick={() => handleFilter(category)}
-          >
-            {category}
-          </button>
-        ))}
+      <div className="flex flex-row justify-between items-center gap-8 h-12 w-full mb-4">
+        {/* Categories */}
+        <div className="flex flex-row justify-center gap-3">
+          {categories.map((category, index) => (
+            <CategoryButton
+              key={index}
+              category={category}
+              filter={filter}
+              onClick={() => handleFilter(category)}
+            />
+          ))}
+        </div>
+        {/* Rating */}
+        <div className="flex flex-row justify-center items-center gap-2">
+          <span className="text-gray-500">Min Rating</span>
+          <input
+            type="number"
+            min="0"
+            max="5"
+            step="0.5"
+            value={ratingFilter}
+            onChange={(e) => handleRatingFilter(Number(e.target.value))}
+            className="rounded-md border-gray-300 text-gray-700 focus:border-primary focus:ring-primary focus:ring-2 w-fit"
+          />
+        </div>
       </div>
 
       {/* Loading Animation */}
@@ -62,23 +83,35 @@ const Products = () => {
       ) : (
         <div className="flex flex-wrap flex-row justify-center gap-4 items-start w-full">
           {/* Products */}
-          {items.map((item) =>
-            filter === 'all' ? (
+          {filteredItems.length > 0 ? (
+            filteredItems.map((item) => (
               <Card
                 key={item.id}
                 item={item}
               />
-            ) : item.category === filter ? (
-              <Card
-                key={item.id}
-                item={item}
-              />
-            ) : null
+            ))
+          ) : (
+            <h1 className="text-center text-2xl font-medium text-gray-500 flex-grow">
+              No products found
+            </h1>
           )}
         </div>
       )}
     </>
   );
 };
+
+const CategoryButton = ({ category, filter, onClick }) => (
+  <button
+    className={`${
+      filter === category
+        ? 'bg-primary text-gray-700'
+        : 'bg-gray-200 text-gray-500 hover:bg-gray-300 hover:text-gray-700'
+    } font-medium text-normal rounded-md px-4 py-2 text-sm transition`}
+    onClick={onClick}
+  >
+    {category}
+  </button>
+);
 
 export default Products;

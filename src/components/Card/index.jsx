@@ -1,28 +1,20 @@
-import { FaRegStar, FaStar } from 'react-icons/fa';
+import { FaRegStar, FaStar, FaStarHalfAlt } from 'react-icons/fa';
 
 const Card = ({ item }) => {
-  let rating = Math.floor(item.rating.rate);
-  let stars = Array(5)
-    .fill(0)
-    .map((_, i) =>
-      i < rating ? (
-        <FaStar
-          key={i}
-          className="text-yellow-500"
-        />
-      ) : (
-        <FaRegStar
-          key={i}
-          className="text-gray-400"
-        />
-      )
-    );
+  const fullStars = Math.floor(item.rating.rate);
+  const halfStar = item.rating.rate % 1 >= 0.5;
+  const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+
+  const stars = [
+    ...Array(fullStars).fill(<FaStar className="text-yellow-500" />),
+    ...(halfStar ? [<FaStarHalfAlt className="text-yellow-500" />] : []),
+    ...Array(emptyStars).fill(<FaRegStar className="text-gray-400" />),
+  ];
 
   return (
-    // Card
     <div className="flex flex-row items-center justify-between bg-gray-200 w-96 max-w-[400px] min-w-52 h-48 rounded-lg flex-shrink-0 flex-grow shadow-md hover:shadow-2xl transition-shadow duration-300 ease-in-out cursor-pointer">
       {/* Card Image and Category */}
-      <div className="overflow-hidden flex-shrink-0  h-full w-2/5 flex flex-col justify-center items-start relative">
+      <div className="overflow-hidden flex-shrink-0 h-full w-2/5 flex flex-col justify-center items-start relative">
         <img
           className="flex-grow aspect-video h-full object-cover object-center rounded-lg"
           src={item.image}
@@ -41,7 +33,9 @@ const Card = ({ item }) => {
         </h1>
         {/* Card Rate and Count */}
         <div className="flex flex-row justify-center gap-1 items-center">
-          {stars}
+          {stars.map((star, index) => (
+            <span key={index}>{star}</span>
+          ))}
           <p className="text-sm text-gray-500 flex items-center h-full">
             {item.rating.count} reviews
           </p>
@@ -52,7 +46,7 @@ const Card = ({ item }) => {
           {item.description}
         </p>
 
-        {/* Price*/}
+        {/* Price */}
         <p className="text-sm text-gray-500 absolute bottom-2 left-2">
           {item.price} €
         </p>
