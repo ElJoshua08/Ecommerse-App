@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import Card from '@/components/Card';
 import { FaStar } from 'react-icons/fa';
+import Card from '@/components/Card';
+import SearchBar from '@/components/SearchBar';
 
 const Products = () => {
   const categories = [
@@ -10,6 +11,7 @@ const Products = () => {
     "men's clothing",
     "women's clothing",
   ];
+  const [search, setSearch] = useState('');
   const [items, setItems] = useState([]);
   const [filter, setFilter] = useState('all');
   const [ratingFilter, setRatingFilter] = useState(0);
@@ -39,16 +41,24 @@ const Products = () => {
     setRatingFilter(minRating);
   };
 
+  const onSearch = (value) => {
+    setSearch(value);
+  };
+
   const filteredItems = items.filter(
     (item) =>
       (filter === 'all' || item.category === filter) &&
-      item.rating.rate >= ratingFilter
+      item.rating.rate >= ratingFilter &&
+      (search === '' || item.title.toLowerCase().includes(search.toLowerCase()))
   );
 
   return (
     <>
       {/* Filters */}
       <div className="flex flex-row justify-between items-center gap-8 h-12 w-full mb-4">
+        {/* Search */}
+        <SearchBar onSearch={onSearch} />
+
         {/* Categories */}
         <div className="flex flex-row justify-center gap-3">
           {categories.map((category, index) => (
