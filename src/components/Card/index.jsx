@@ -7,7 +7,7 @@ const Card = ({ item }) => {
 
   const stars = [
     ...Array(fullStars).fill(<FaStar className="text-yellow-500" />),
-    ...(halfStar ? [<FaStarHalfAlt className="text-yellow-500" />] : []),
+    ...(halfStar ? [<FaStarHalfAlt className="text-yellow-500" key={1} />] : []),
     ...Array(emptyStars).fill(<FaRegStar className="text-gray-400" />),
   ];
 

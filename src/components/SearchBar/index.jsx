@@ -3,7 +3,7 @@ const SearchBar = ({ onSearch }) => {
     <input
       type="text"
       placeholder="Search"
-      className="rounded-md bg-gray-200 text-gray-700 focus:border-primary focus:ring-primary focus:ring-2 w-36"
+      className="rounded-md bg-gray-200 text-gray-700 focus:border-primary-dark w-36 py-2 px-4"
       onChange={(e) => onSearch(e.target.value)}
     />
   );
