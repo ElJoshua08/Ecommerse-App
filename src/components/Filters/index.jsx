@@ -1,6 +1,12 @@
 import SearchBar from '@/components/SearchBar';
 
-const Filters = ({ onSearch, onFilterselect, onRatingFilterSelect, filter, ratingFilter }) => {
+const Filters = ({
+  onSearch,
+  onFilterselect,
+  onRatingFilterSelect,
+  filter,
+  ratingFilter,
+}) => {
   const categories = [
     'all',
     'electronics',
@@ -10,12 +16,12 @@ const Filters = ({ onSearch, onFilterselect, onRatingFilterSelect, filter, ratin
   ];
 
   return (
-    <div className="flex flex-row justify-between items-center gap-8 h-12 w-full mb-4 relative top-[-16px]">
+    <div className="flex flex-row justify-between items-center gap-8 h-10 w-full mb-4 relative top-[-16px]">
       {/* Search */}
       <SearchBar onSearch={onSearch} />
 
       {/* Categories */}
-      <div className="flex flex-row justify-center gap-3">
+      <div className="flex flex-row justify-center h-full gap-4">
         {categories.map((category, index) => (
           <CategoryButton
             key={index}
@@ -27,7 +33,7 @@ const Filters = ({ onSearch, onFilterselect, onRatingFilterSelect, filter, ratin
       </div>
       {/* Rating */}
       <div className="flex flex-row justify-center items-center gap-2">
-        <span className="text-gray-500">Min Rating</span>
+        <span className="text-slate-500">Min Rating</span>
         <input
           type="number"
           min="0"
@@ -44,16 +50,17 @@ const Filters = ({ onSearch, onFilterselect, onRatingFilterSelect, filter, ratin
 
 const CategoryButton = ({ category, filter, onClick }) => (
   <button
-    className={`${
-      filter === category
-        ? 'bg-primary text-gray-700'
-        : 'bg-gray-200 text-gray-500 hover:bg-gray-300 hover:text-gray-700'
-    } font-medium text-normal rounded-md px-4 py-2 text-sm transition`}
+    className={`
+      ${
+        filter === category
+          ? 'bg-primary-dark text-slate-100'
+          : 'bg-slate-200 text-slate-500 hover:bg-slate-300 hover:text-slate-700'
+      } 
+    font-medium rounded-md px-4 h-full text-base transition `} 
     onClick={onClick}
   >
     {category}
   </button>
 );
-
 
 export default Filters;

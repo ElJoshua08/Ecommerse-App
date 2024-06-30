@@ -60,7 +60,7 @@ const Products = () => {
           <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary"></div>
         </div>
       ) : (
-        <div className="flex flex-wrap flex-row justify-center gap-4 items-start w-full">
+        <div className="flex flex-wrap flex-row justify-center gap-4 items-start w-full relative top-[-20px]">
           {/* Products */}
           {filteredItems.length > 0 ? (
             filteredItems.map((item) => (
