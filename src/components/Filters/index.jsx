@@ -41,7 +41,8 @@ const Filters = ({
           step="0.5"
           value={ratingFilter}
           onChange={(e) => onRatingFilterSelect(Number(e.target.value))}
-          className="rounded-md border-gray-300 text-gray-700 focus:border-primary focus:ring-primary focus:ring-2 w-fit"
+          className="rounded-md border-gray-300 text-gray-700 focus:border-primary focus:ring-primary 
+          focus:ring-2 w-fit pl-2"
         />
       </div>
     </div>
@@ -54,9 +55,9 @@ const CategoryButton = ({ category, filter, onClick }) => (
       ${
         filter === category
           ? 'bg-primary-dark text-slate-100'
-          : 'bg-slate-200 text-slate-500 hover:bg-slate-300 hover:text-slate-700'
+          : 'bg-slate-200 text-slate-500 hover:bg-slate-300 hover:text-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-slate-100'
       } 
-    font-medium rounded-md px-4 h-full text-base transition `} 
+    font-medium rounded-md px-4 h-full text-base transition `}
     onClick={onClick}
   >
     {category}
