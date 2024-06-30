@@ -1,9 +1,10 @@
-.- [ ] 🎉 Change theme colors
+.- [x] 🎉 Change theme colors
 .- [x] 🎉 Add search bar in header
 .- [ ] 🎉 Add home page
 .- [ ] 🎉 Add bigger cards in home page
 .- [ ] 🎉 Add my account page
 .- [ ] 🎉 Add cart page
 .- [ ] 🎉 Add price filter in product page
-.- [ ] 🎉 Add change how rating filter works  in product page
-.- [ ] 🎉 Add Loading skeleton in product page
+.- [ ] 🎉 Add change how rating filter works in product page
+.- [ ] 🎉 Add Loading skeleton in all pages
+.- [ ] 🎉 Change add to cart button on cards

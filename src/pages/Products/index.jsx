@@ -1,15 +1,8 @@
 import { useEffect, useState } from 'react';
 import Card from '@/components/Card';
-import SearchBar from '@/components/SearchBar';
+import Filters from '@/components/Filters';
 
 const Products = () => {
-  const categories = [
-    'all',
-    'electronics',
-    'jewelery',
-    "men's clothing",
-    "women's clothing",
-  ];
   const [search, setSearch] = useState('');
   const [items, setItems] = useState([]);
   const [filter, setFilter] = useState('all');
@@ -32,11 +25,11 @@ const Products = () => {
     fetchData();
   }, []);
 
-  const handleFilter = (category) => {
+  const onFilterSelect = (category) => {
     setFilter(category);
   };
 
-  const handleRatingFilter = (minRating) => {
+  const onRatingFilterSelect = (minRating) => {
     setRatingFilter(minRating);
   };
 
@@ -53,36 +46,13 @@ const Products = () => {
 
   return (
     <>
-      {/* Filters */}
-      <div className="flex flex-row justify-between items-center gap-8 h-12 w-full mb-4">
-        {/* Search */}
-        <SearchBar onSearch={onSearch} />
-
-        {/* Categories */}
-        <div className="flex flex-row justify-center gap-3">
-          {categories.map((category, index) => (
-            <CategoryButton
-              key={index}
-              category={category}
-              filter={filter}
-              onClick={() => handleFilter(category)}
-            />
-          ))}
-        </div>
-        {/* Rating */}
-        <div className="flex flex-row justify-center items-center gap-2">
-          <span className="text-gray-500">Min Rating</span>
-          <input
-            type="number"
-            min="0"
-            max="5"
-            step="0.5"
-            value={ratingFilter}
-            onChange={(e) => handleRatingFilter(Number(e.target.value))}
-            className="rounded-md border-gray-300 text-gray-700 focus:border-primary focus:ring-primary focus:ring-2 w-fit"
-          />
-        </div>
-      </div>
+      <Filters
+        onSearch={onSearch}
+        onFilterselect={onFilterSelect}
+        onRatingFilterSelect={onRatingFilterSelect}
+        filter={filter}
+        ratingFilter={ratingFilter}
+      />
 
       {/* Loading Animation */}
       {loading ? (
@@ -109,18 +79,5 @@ const Products = () => {
     </>
   );
 };
-
-const CategoryButton = ({ category, filter, onClick }) => (
-  <button
-    className={`${
-      filter === category
-        ? 'bg-primary text-gray-700'
-        : 'bg-gray-200 text-gray-500 hover:bg-gray-300 hover:text-gray-700'
-    } font-medium text-normal rounded-md px-4 py-2 text-sm transition`}
-    onClick={onClick}
-  >
-    {category}
-  </button>
-);
 
 export default Products;
