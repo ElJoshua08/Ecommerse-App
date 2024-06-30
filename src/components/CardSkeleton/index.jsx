@@ -1,3 +1,4 @@
+
 const CardSkeleton = () => {
   return (
     <div className="relative flex flex-row items-center justify-between bg-slate-200 w-96 max-w-[400px] min-w-52 h-48 rounded-lg flex-shrink-0 flex-grow shadow-md duration-300 ease-in-out cursor-pointer dark:bg-slate-800 dark:shadow-slate-600/50 overflow-hidden">

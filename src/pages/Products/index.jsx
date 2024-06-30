@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Card from '@/components/Card';
 import Filters from '@/components/Filters';
+import CardSkeleton from '../../components/CardSkeleton';
 
 const Products = () => {
   const [search, setSearch] = useState('');
@@ -56,8 +57,13 @@ const Products = () => {
 
       {/* Loading Animation */}
       {loading ? (
-        <div className="flex justify-center items-center w-full h-64">
-          <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary"></div>
+        <div className="flex flex-wrap flex-row justify-center gap-4 items-start w-full relative top-[-18px]">
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
         </div>
       ) : (
         <div className="flex flex-wrap flex-row justify-center gap-4 items-start w-full relative top-[-18px]">
