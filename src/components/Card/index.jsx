@@ -59,7 +59,7 @@ const Card = ({ item }) => {
         </p>
 
         {/* Add to cart button */}
-        <button className="bg-secondary text-slate-100 rounded-md px-2 py-1 text-md tracking-wide right-[0.6rem] bottom-2 absolute font-semibold transition hover:bg-secondary-dark">
+        <button className="bg-secondary text-slate-100 rounded-md px-2 py-1 text-md tracking-wide right-[0.6rem] bottom-2 absolute font-semibold transition-colors duration-200 hover:bg-secondary-dark">
           Add to cart
         </button>
       </div>
