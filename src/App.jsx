@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 
 function App() {
   return (
-    <div className="App bg-white dark:bg-gray-900 dark:text-white relative overflow-auto">
+    <div className="App bg-white dark:bg-gray-900 dark:text-white relative overflow-auto min-h-screen">
       <Router>
         <Header />
         <div className="flex-grow flex items-start justify-center flex-wrap gap-4 w-full mt-[85px] relative px-5 py-3 mb-14">
