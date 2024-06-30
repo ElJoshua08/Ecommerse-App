@@ -1,22 +1,17 @@
-import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from '@/pages/Home';
 import MyAccount from '@/pages/MyAccount';
 import Products from '@/pages/Products';
+import Cart from '@/pages/Cart';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
+
 function App() {
-  const [actualPage, setActualPage] = useState("/");
-
-
   return (
     <div className="App bg-white dark:bg-gray-900 dark:text-white relative overflow-auto min-h-screen">
       <Router>
-        <Header
-          actualPage={actualPage}
-          setActualPage={setActualPage}
-        />
+        <Header />
         <div className="flex-grow flex items-start justify-center flex-wrap gap-4 w-full mt-[85px] relative px-5 py-3 mb-14">
           <Routes>
             <Route
@@ -30,6 +25,10 @@ function App() {
             <Route
               path="/products"
               element={<Products />}
+            />
+            <Route
+              path="/cart"
+              element={<Cart />}
             />
           </Routes>
         </div>

@@ -1,7 +1,9 @@
 import { FaHome, FaShoppingCart, FaUser } from 'react-icons/fa';
+import { FaShop } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
+import usePageStore from '@/stores/actualPageStore.js';
 
-const Header = ({ actualPage, setActualPage }) => {
+const Header = () => {
   return (
     <header className="flex bg-slate-100 shadow-md shadow-slate-200 py-4 px-2 fixed top-0 left-0 w-full items-center justify-between h-[70px] dark:bg-gray-800 dark:shadow-gray-700 z-[90]">
       <div className="flex items-center gap-2">
@@ -19,8 +21,6 @@ const Header = ({ actualPage, setActualPage }) => {
           <li>
             <LinkComponent
               to="/"
-              actualPage={actualPage}
-              setActualPage={setActualPage}
             >
               <LinkIcon>
                 <FaHome />
@@ -31,20 +31,26 @@ const Header = ({ actualPage, setActualPage }) => {
           <li>
             <LinkComponent
               to="/products"
-              actualPage={actualPage}
-              setActualPage={setActualPage}
             >
               <LinkIcon>
-                <FaShoppingCart />
+                <FaShop />
               </LinkIcon>
               <LinkTitle>Products</LinkTitle>
             </LinkComponent>
           </li>
           <li>
             <LinkComponent
+              to="/cart"
+            >
+              <LinkIcon>
+                <FaShoppingCart />
+              </LinkIcon>
+              <LinkTitle>Cart</LinkTitle>
+            </LinkComponent>
+          </li>
+          <li>
+            <LinkComponent
               to="/my-account"
-              actualPage={actualPage}
-              setActualPage={setActualPage}
             >
               <LinkIcon>
                 <FaUser />
@@ -58,7 +64,9 @@ const Header = ({ actualPage, setActualPage }) => {
   );
 };
 
-const LinkComponent = ({ to, children, actualPage, setActualPage }) => {
+const LinkComponent = ({ to, children }) => {
+  const { actualPage, setActualPage } = usePageStore();
+
   const isActive = actualPage === to;
 
   return (
@@ -78,7 +86,9 @@ const LinkComponent = ({ to, children, actualPage, setActualPage }) => {
 };
 
 const LinkTitle = ({ children }) => {
-  return <h1 className="text-1xl hidden md:block font-medium pr-2">{children}</h1>;
+  return (
+    <h1 className="text-1xl hidden md:block font-medium pr-2">{children}</h1>
+  );
 };
 
 const LinkIcon = ({ children }) => {
