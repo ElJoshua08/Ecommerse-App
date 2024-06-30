@@ -74,7 +74,7 @@ const LinkComponent = ({ to, children }) => {
       to={to}
       className={`flex items-center justify-center gap-1 transition-colors rounded-md ${
         isActive
-          ? 'bg-slate-200 dark:bg-slate-600 text-white'
+          ? 'bg-slate-200 dark:bg-slate-600 text-slate-900 dark:text-slate-200'
           : 'text-gray-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700'
       }`}
       onClick={() => setActualPage(to)}
