@@ -16,7 +16,7 @@ const Filters = ({
   ];
 
   return (
-    <div className="flex flex-row justify-between items-center gap-8 h-10 w-full mb-4 relative top-[-16px]">
+    <div className="flex flex-row justify-between items-center gap-8 h-10 w-full mb-4 relative top-[-5px]">
       {/* Search */}
       <SearchBar onSearch={onSearch} />
 
