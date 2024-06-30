@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { FaStar } from 'react-icons/fa';
 import Card from '@/components/Card';
 import SearchBar from '@/components/SearchBar';
 
