@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 
 const Header = ({ actualPage, setActualPage }) => {
   return (
-    <header className="flex bg-slate-100 shadow-md shadow-slate-200 p-4 fixed top-0 left-0 w-full items-center justify-between h-[70px] dark:bg-gray-800 dark:shadow-gray-700 z-10">
+    <header className="flex bg-slate-100 shadow-md shadow-slate-200 py-4 px-2 fixed top-0 left-0 w-full items-center justify-between h-[70px] dark:bg-gray-800 dark:shadow-gray-700 z-10">
       <div className="flex items-center gap-2">
         <img
           src="/logo/1024.png"
           alt="logo"
-          className="w-12 h-12"
+          className="w-16 h-16"
         />
         <h1 className="text-1xl font-medium text-gray-900 dark:text-slate-200">
           Ecommerce App
