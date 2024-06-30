@@ -3,23 +3,15 @@ import { FaGithub, FaInstagram } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 py-6 rounded-t-xl w-full flex flex-col justify-center items-center absolute bottom-0">
+    <footer className="bg-gray-200 shadow-2xl shadow-gray-900 rounded-t-xl w-full flex flex-row justify-between items-center absolute bottom-0 px-4 py-2 dark:bg-gray-800 dark:shadow-white">
       {/* Author Social Media */}
-      <div className="absolute left-2 bottom-2 flex flex-row justify-center items-center gap-3">
-        <a
-          href="https://github.com/ElJoshua08"
-          target="_blank"
-          rel="noreferrer"
-          className="text-gray-700 font-bold text-2xl"
-        >
+      <div className="flex flex-row justify-center items-center gap-3">
+        <SocialLink link="https://github.com/ElJoshua08">
           <FaGithub />
-        </a>
-        <a
-          href="https://www.instagram.com/el_.joshua/"
-          className="text-gray-700 font-bold text-2xl"
-        >
+        </SocialLink>
+        <SocialLink link="https://www.instagram.com/el_.joshua/">
           <FaInstagram />
-        </a>
+        </SocialLink>
       </div>
 
       {/* Author */}
@@ -28,6 +20,19 @@ const Footer = () => {
         authorLink="https://github.com/ElJoshua08"
       />
     </footer>
+  );
+};
+
+const SocialLink = ({ link, children }) => {
+  return (
+    <a
+      href={link}
+      target="_blank"
+      rel="noreferrer"
+      className="text-gray-700 font-bold text-2xl hover:text-secondary-dark"
+    >
+      {children}
+    </a>
   );
 };
 

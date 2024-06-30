@@ -10,27 +10,33 @@ const Header = () => {
           alt="logo"
           className="w-12 h-12"
         />
-        <h1 className="text-1xl font-medium text-gray-900">Ecommerce App</h1>
+        <h1 className="text-1xl font-medium text-gray-900 dark:text-slate-200">
+          Ecommerce App
+        </h1>
       </div>
       <nav className="flex flex-grow items-center justify-end mr-1">
         <ul className="flex gap-2 md:gap-4">
           <li>
-            <LinkComponent
-              to="/"
-            >
-              <LinkIcon><FaHome /></LinkIcon>
+            <LinkComponent to="/">
+              <LinkIcon>
+                <FaHome />
+              </LinkIcon>
               <LinkTitle>Home</LinkTitle>
             </LinkComponent>
           </li>
           <li>
             <LinkComponent to="/products">
-              <LinkIcon><FaShoppingCart /></LinkIcon>
+              <LinkIcon>
+                <FaShoppingCart />
+              </LinkIcon>
               <LinkTitle>Products</LinkTitle>
             </LinkComponent>
           </li>
           <li>
             <LinkComponent to="/my-account">
-              <LinkIcon><FaUser /></LinkIcon>
+              <LinkIcon>
+                <FaUser />
+              </LinkIcon>
               <LinkTitle>My Account</LinkTitle>
             </LinkComponent>
           </li>
@@ -44,24 +50,24 @@ const LinkComponent = ({ to, children }) => {
   return (
     <Link
       to={to}
-      className="flex items-center justify-center gap-1 transition hover:text-secondary-dark"
+      className="flex items-center justify-center gap-1 transition *:hover:text-secondary-dark
+      *:text-gray-700 dark:*:text-slate-200 *:transition-colors"
     >
       {children}
     </Link>
   );
 };
 
-const LinkTitle = ({ children }) => { 
-  return (
-    <h1 className="text-1xl hidden md:block font-medium text-gray-700
-    transition hover:text-secondary-dark">{children}</h1>
-  );
-}
+const LinkTitle = ({ children }) => {
+  return <h1 className="text-1xl hidden md:block font-medium">{children}</h1>;
+};
 
 const LinkIcon = ({ children }) => {
   return (
-    <div className="flex items-center justify-center w-8 h-8 bg-gray-200 rounded-md md:rounded-none md:bg-transparent text-gray-700 hover:text-secondary-dark">{children}</div> 
+    <div className="flex items-center justify-center w-8 h-8 bg-gray-200 rounded-md md:rounded-none md:bg-transparent dark:bg-slate-700 dark:md:bg-transparent dark:text-slate-200 text-gray-700">
+      {children}
+    </div>
   );
-}
+};
 
 export default Header;

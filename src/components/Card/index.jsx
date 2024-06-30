@@ -7,12 +7,19 @@ const Card = ({ item }) => {
 
   const stars = [
     ...Array(fullStars).fill(<FaStar className="text-yellow-500" />),
-    ...(halfStar ? [<FaStarHalfAlt className="text-yellow-500" key={1} />] : []),
-    ...Array(emptyStars).fill(<FaRegStar className="text-gray-400" />),
+    ...(halfStar
+      ? [
+          <FaStarHalfAlt
+            className="text-yellow-500"
+            key={1}
+          />,
+        ]
+      : []),
+    ...Array(emptyStars).fill(<FaRegStar className="text-slate-400" />),
   ];
 
   return (
-    <div className="flex flex-row items-center justify-between bg-gray-200 w-96 max-w-[400px] min-w-52 h-48 rounded-lg flex-shrink-0 flex-grow shadow-md hover:shadow-2xl transition-shadow duration-300 ease-in-out cursor-pointer">
+    <div className="flex flex-row items-center justify-between bg-slate-200 w-96 max-w-[400px] min-w-52 h-48 rounded-lg flex-shrink-0 flex-grow shadow-md hover:shadow-2xl transition-shadow duration-300 ease-in-out cursor-pointer">
       {/* Card Image and Category */}
       <div className="overflow-hidden flex-shrink-0 h-full w-2/5 flex flex-col justify-center items-start relative">
         <img
