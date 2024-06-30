@@ -17,6 +17,15 @@ export default {
       fontFamily: {
         sans: ['Nunito', 'sans-serif'],
       },
+      animation: {
+        wave: 'wave 2.5s ease-out infinite',
+      },
+      keyframes: {
+        wave: {
+          '0%': { backgroundPosition: '200% 0' },
+          '100%': { backgroundPosition: '-200% 0' },
+        },
+      },
     },
   },
   plugins: [],
