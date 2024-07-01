@@ -22,7 +22,7 @@ const Home = () => {
     <>
       <main className="flex flex-col items-center justify-center min-h-screen w-full">
         {/* Main Content */}
-        <section className="flex flex-row items-center justify-center min-h-[calc(100vh-70px)] w-full">
+        <section className="flex flex-row items-center justify-center min-h-[calc(100vh-70px)] w-full relative">
           <h1 className="flex-grow text-center text-6xl text-slate-200 max-w-xl">
             WELCOME TO{' '}
             <strong className="animate-wave bg-[length:200%_100%] text-transparent bg-clip-text bg-gradient-to-r from-primary-dark to-amber-400 text-7xl">
@@ -37,7 +37,7 @@ const Home = () => {
               alt="logo"
               className="w-full rounded-lg aspect-square"
             />
-            <h3 className="relative top-[-60px] text-center text-lg text-slate-400 font-thin">
+            <h3 className="relative top-[-60px] text-center text-lg text-slate-400 font-thin z-10">
               <strong className="text-slate-200">Fast</strong> -{' '}
               <strong className="text-slate-200">Reliable</strong> -{' '}
               <strong className="text-slate-200">Secure</strong>
@@ -45,14 +45,15 @@ const Home = () => {
           </section>
 
           <Link to="products">
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold text-3xl py-2 px-3 rounded absolute bottom-8 left-8 transition-colors duration-200">
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold text-3xl py-2 px-3 rounded absolute bottom-8 left-8 transition-colors duration-200 z-[99]">
               SHOP NOW
             </button>
           </Link>
         </section>
 
         {/* Why choose ShopNet */}
-        <section className="flex flex-col items-center justify-center gap-4 w-2/5 flex-shrink-0">
+        <section className="flex flex-col items-center justify-center gap-4 w-full min-h-screen flex-shrink-0 bg-slate-800 relative pt-16 mt-4">
+          <img src="/waves/homeSection2.png" alt="wave" className="absolute top-[-110px] left-0 w-full z-[1]" />
           <h2 className="text-center text-2xl font-medium text-slate-400 mb-4">
             Why choose ShopNet?
           </h2>
