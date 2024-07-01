@@ -5,7 +5,7 @@ import usePageStore from '@/stores/actualPageStore.js';
 
 const Header = () => {
   return (
-    <header className="flex bg-slate-100 shadow-md shadow-slate-200 py-4 px-2 fixed top-0 left-0 w-full items-center justify-between h-[70px] dark:bg-gray-800 dark:shadow-gray-700 z-[90]">
+    <header className="flex bg-slate-100 shadow-md shadow-slate-200 py-4 px-2 fixed top-0 left-0 w-full items-center justify-between h-[70px] dark:bg-gray-800 dark:shadow-gray-700 z-[90] absolute">
       <div className="flex items-center gap-2">
         <img
           src="/logo/1024.png"

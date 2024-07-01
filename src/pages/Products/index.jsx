@@ -56,33 +56,29 @@ const Products = () => {
         ratingFilter={ratingFilter}
       />
 
-      {/* Loading Animation */}
-      {loading ? (
-        <div className="flex flex-wrap flex-row justify-center gap-4 items-start w-full relative top-[-18px]">
-          <CardSkeleton />
-          <CardSkeleton />
-          <CardSkeleton />
-          <CardSkeleton />
-          <CardSkeleton />
-          <CardSkeleton />
-        </div>
-      ) : (
-        <div className="flex flex-wrap flex-row justify-center gap-4 items-start w-full relative top-[-18px]">
-          {/* Products */}
-          {filteredItems.length > 0 ? (
-            filteredItems.map((item) => (
-              <Card
-                key={item.id}
-                item={item}
-              />
-            ))
-          ) : (
-            <h1 className="text-center text-2xl font-medium text-gray-500 flex-grow">
-              No products found
-            </h1>
-          )}
-        </div>
-      )}
+      <div className="flex flex-wrap flex-row justify-center gap-4 items-start w-full relative top-[-18px] px-4 py-2">
+        {loading ? (
+          <>
+            <CardSkeleton />
+            <CardSkeleton />
+            <CardSkeleton />
+            <CardSkeleton />
+            <CardSkeleton />
+            <CardSkeleton />
+          </>
+        ) : filteredItems.length > 0 ? (
+          filteredItems.map((item) => (
+            <Card
+              key={item.id}
+              item={item}
+            />
+          ))
+        ) : (
+          <h1 className="text-center text-2xl font-medium text-gray-500 flex-grow">
+            No products found
+          </h1>
+        )}
+      </div>
     </>
   );
 };

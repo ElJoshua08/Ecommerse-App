@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 body {
   overflow: auto;
 
@@ -16,7 +17,6 @@ body {
     border-radius: 10px;
     @apply bg-accent-dark;
   }
-
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,10 +24,9 @@ body {
     &::-webkit-scrollbar {
       @apply bg-slate-800;
     }
-  
+
     &::-webkit-scrollbar-thumb {
       @apply bg-primary;
     }
-
   }
 }

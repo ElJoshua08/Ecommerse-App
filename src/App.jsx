@@ -1,7 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useItemsStore } from '@/stores/itemsStore';
-import { fetchItems } from '@/api/fetchItems';
 import Home from '@/pages/Home';
 import MyAccount from '@/pages/MyAccount';
 import Products from '@/pages/Products';
@@ -14,7 +11,8 @@ function App() {
     <div className="App bg-white dark:bg-gray-900 dark:text-white relative overflow-auto min-h-screen">
       <Router>
         <Header />
-        <div className="flex-grow flex items-start justify-center flex-wrap gap-4 w-full mt-[85px] relative px-5 py-3 mb-14">
+        <div className="flex-grow flex items-start justify-center flex-wrap gap-4 w-full 
+        mt-[70px] relative mb-[40px]">
           <Routes>
             <Route
               path="/"
