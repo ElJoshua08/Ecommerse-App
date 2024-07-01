@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useItemsStore } from '@/stores/itemsStore';
 import { fetchItems } from '@/api/fetchItems';

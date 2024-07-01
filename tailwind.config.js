@@ -17,6 +17,9 @@ export default {
       fontFamily: {
         sans: ['Nunito', 'sans-serif'],
       },
+      dropShadow: {
+        card: '0px 0px 10px #bc7af9',
+      },
       animation: {
         wave: 'wave 2.5s ease-out infinite',
       },
