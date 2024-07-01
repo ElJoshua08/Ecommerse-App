@@ -5,14 +5,14 @@ import usePageStore from '@/stores/actualPageStore.js';
 
 const Header = () => {
   return (
-    <header className="flex bg-slate-100 shadow-md shadow-slate-200 py-4 px-2 fixed top-0 left-0 w-full items-center justify-between h-[70px] dark:bg-gray-800 dark:shadow-gray-700 z-[90] absolute">
+    <header className="flex bg-slate-100 shadow-md shadow-slate-200 py-4 px-2 top-0 left-0 w-full items-center justify-between h-[70px] dark:bg-gray-800 dark:shadow-gray-700 z-[90] absolute">
       <div className="flex items-center gap-2">
         <img
           src="/logo/1024.png"
           alt="logo"
           className="w-16 h-16"
         />
-        <h1 className="text-2xl font-medium text-gray-900 dark:text-slate-200">
+        <h1 className="text-2xl font-medium text-slate-700 dark:text-slate-200">
           <strong className="text-bold text-3xl text-primary">S</strong>hop{' '}
           <strong className="text-bold text-3xl text-primary">N</strong>et
         </h1>

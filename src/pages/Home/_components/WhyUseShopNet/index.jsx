@@ -18,9 +18,8 @@ const WhyUseShopNet = ({ theme }) => {
         className="absolute top-0 translate-y-[-97%] left-0 w-full z-[1]"
       />
       {/* Section title */}
-      <h1 className="text-center text-7xl font-medium text-slate-300 mb-4">
-        Why choose <strong className="text-primary font-bold">S</strong>hop
-        <strong className="text-primary font-bold">N</strong>et?
+      <h1 className="text-center text-7xl font-medium text-slate-500 dark:text-slate-300 mb-4">
+        Why choose us?
       </h1>
 
       {/* Section content */}
@@ -60,7 +59,7 @@ const Card = ({ title, description, icon, inverse }) => {
         className="w-64 aspect-square drop-shadow-card"
       />
       {/* Card content */}
-      <div className="flex flex-col items-center justify-center gap-2 w-2/3 text-center bg-slate-300 dark:bg-slate-700 p-4 rounded-lg border-2 border-slate-400 dark:border-slate-600 shadow-lg shadow-slate-200 dark:shadow-slate-600/50">
+      <div className="flex flex-col items-center justify-center gap-2 w-2/3 text-center bg-slate-300 dark:bg-slate-700 p-4 rounded-lg border-2 border-slate-400 dark:border-slate-600 shadow-lg shadow-slate-300 dark:shadow-slate-600/50">
         <h3 className="text-center text-5xl text-slate-500 dark:text-slate-200 font-bold">
           {title}
         </h3>
