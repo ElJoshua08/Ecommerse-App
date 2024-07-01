@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 const Main = () => {
   return (
     // Main Content
-    <section className="flex flex-row items-center justify-center min-h-[calc(100vh-70px)] w-full relative">
+    <section className="flex flex-row items-center justify-around min-h-[calc(100vh-70px)] w-full relative px-5">
       <h1 className="flex-grow text-center text-6xl text-slate-600 dark:text-slate-200 max-w-xl">
         WELCOME TO{' '}
         <strong className="animate-wave bg-[length:200%_100%] text-transparent bg-clip-text bg-gradient-to-r from-primary-dark to-amber-400 text-7xl">
@@ -18,7 +18,7 @@ const Main = () => {
           alt="logo"
           className="w-full rounded-lg aspect-square p-8 drop-shadow-card"
         />
-        <h3 className="relative top-[-60px] text-center text-2xl text-slate-500 font-light z-10">
+        <h3 className="relative top-[-60px] text-center text-xl text-slate-500 font-light z-10">
           <strong className="text-slate-600 dark:text-slate-200">
             Fast
           </strong>{' '}
@@ -34,7 +34,7 @@ const Main = () => {
       </section>
 
       <Link to="products">
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold text-3xl py-2 px-3 rounded absolute bottom-8 left-8 transition-colors duration-200 z-[99]">
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold text-3xl py-2 px-3 rounded absolute bottom-8 left-[50%] translate-x-[-50%] transition-colors duration-200 z-[99]">
           SHOP NOW
         </button>
       </Link>

@@ -1,7 +1,7 @@
 import { FaHome, FaShoppingCart, FaUser } from 'react-icons/fa';
 import { FaShop } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
-import usePageStore from '@/stores/actualPageStore.js';
+import { usePageStore } from '@/stores/pageStore.js';
 
 const Header = () => {
   return (
@@ -10,7 +10,7 @@ const Header = () => {
         <img
           src="/logo/1024.png"
           alt="logo"
-          className="w-16 h-16"
+          className="max-h-12 aspect-square"
         />
         <h1 className="text-2xl font-medium text-slate-700 dark:text-slate-200">
           <strong className="text-bold text-3xl text-primary">S</strong>hop{' '}
