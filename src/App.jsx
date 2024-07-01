@@ -1,4 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useUserStore } from '@/stores/userStore';
+import { fetchUser } from '@/api/fetchUser';
 import Home from '@/pages/Home';
 import MyAccount from '@/pages/MyAccount';
 import Products from '@/pages/Products';
@@ -7,12 +10,29 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 function App() {
+  const { setUser, user } = useUserStore();
+
+  useEffect(() => {
+    const getUser = async () => {
+      const data = await fetchUser();
+      setUser(data);
+    };
+
+    // Only fetch data when the user store is empty
+    if (!user) {
+      getUser();
+    }
+  }, [setUser, user]);
+
+
   return (
     <div className="App bg-white dark:bg-gray-900 dark:text-white relative overflow-auto min-h-screen">
       <Router>
         <Header />
-        <div className="flex-grow flex items-start justify-center flex-wrap gap-4 w-full 
-        mt-[70px] relative mb-[40px]">
+        <div
+          className="flex-grow flex items-start justify-center flex-wrap gap-4 w-full 
+        mt-[70px] relative mb-[40px]"
+        >
           <Routes>
             <Route
               path="/"
