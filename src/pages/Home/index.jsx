@@ -1,49 +1,45 @@
-import { useEffect, useState } from 'react';
-import Card from '@/components/Card';
+import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useItemsStore } from '@/stores/itemsStore';
+import { fetchItems } from '@/api/fetchItems';
 
 const Home = () => {
-  const [loading, setLoading] = useState(true);
-  const [items, setItems] = useState([]);
+  const { items, setItems } = useItemsStore();
+
   useEffect(() => {
-    async function fetchData() {
-      setLoading(true);
-      const res = await fetch('https://fakestoreapi.com/products');
-      const data = await res.json();
+    const getItems = async () => {
+      const data = await fetchItems();
+      setItems(data);
+    };
 
-      // Simulate a delay to ensure loading animation is visible
-      setTimeout(() => {
-        setItems(data);
-        setLoading(false);
-      }, 500); // 500 milliseconds delay
+    // Only fecth data when the items store is empty
+    if (items.length === 0) {
+      getItems();
     }
+  }, [items, setItems]);
 
-    fetchData();
-  }, []);
-  
+  const heroItems = items
+    .filter((item) => item.category === 'electronics')
+    .filter((_, i) => i < 3);
+
   return (
     <>
-      {/* Loading Animation */}
-      {loading ? (
-        <div className="flex justify-center items-center w-full h-64">
-          <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary"></div>
-        </div>
-      ) : (
-        <div className="flex flex-wrap flex-row justify-center gap-4 items-start w-full">
-          {/* Products */}
-          {items.length > 0 ? (
-            items.map((item) => (
-              <Card
-                key={item.id}
-                item={item}
-              />
-            ))
-          ) : (
-            <h1 className="text-center text-2xl font-medium text-gray-500 flex-grow">
-              No products found
-            </h1>
-          )}
-        </div>
-      )}
+      <main className="flex flex-row items-center justify-center w-full h-screen">
+        <h1>
+          WELCOME TO <strong>SHOP NET</strong>, YOUR FAVORITE SHOPPING APP
+        </h1>
+        <section>
+          {heroItems.map((item) => (
+            <img src={item.image} alt="image" key={item.id} className='w-32 h-32 rounded-lg' />
+          ))}
+        </section>
+
+        <Link to="products">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            SHOP NOW
+          </button>
+        </Link>
+      </main>
     </>
   );
 };

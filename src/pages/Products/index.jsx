@@ -1,30 +1,31 @@
 import { useEffect, useState } from 'react';
 import Card from '@/components/Card';
 import Filters from '@/components/Filters';
-import CardSkeleton from '../../components/CardSkeleton';
+import CardSkeleton from '@/components/CardSkeleton';
+import { useItemsStore } from '@/stores/itemsStore';
+import { fetchItems } from '@/api/fetchItems';
 
 const Products = () => {
+  const { items, setItems } = useItemsStore();
+
   const [search, setSearch] = useState('');
-  const [items, setItems] = useState([]);
   const [filter, setFilter] = useState('all');
   const [ratingFilter, setRatingFilter] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(items.length === 0);
 
   useEffect(() => {
-    async function fetchData() {
+    const getItems = async () => {
       setLoading(true);
-      const res = await fetch('https://fakestoreapi.com/products');
-      const data = await res.json();
+      const data = await fetchItems();
+      setItems(data);
+      setLoading(false);
+    };
 
-      // Simulate a delay to ensure loading animation is visible
-      setTimeout(() => {
-        setItems(data);
-        setLoading(false);
-      }, 500); // 500 milliseconds delay
+    // Only fecth data when the items store is empty
+    if (items.length === 0) {
+      getItems();
     }
-
-    fetchData();
-  }, []);
+  }, [items, setItems]);
 
   const onFilterSelect = (category) => {
     setFilter(category);

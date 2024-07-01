@@ -12,16 +12,15 @@ const Header = () => {
           alt="logo"
           className="w-16 h-16"
         />
-        <h1 className="text-1xl font-medium text-gray-900 dark:text-slate-200">
-          Ecommerce App
+        <h1 className="text-2xl font-medium text-gray-900 dark:text-slate-200">
+          <strong className="text-bold text-3xl text-primary">S</strong>hop{' '}
+          <strong className="text-bold text-3xl text-primary">N</strong>et
         </h1>
       </div>
       <nav className="flex flex-grow items-center justify-end mr-1">
         <ul className="flex gap-2 md:gap-4">
           <li>
-            <LinkComponent
-              to="/"
-            >
+            <LinkComponent to="/">
               <LinkIcon>
                 <FaHome />
               </LinkIcon>
@@ -29,9 +28,7 @@ const Header = () => {
             </LinkComponent>
           </li>
           <li>
-            <LinkComponent
-              to="/products"
-            >
+            <LinkComponent to="/products">
               <LinkIcon>
                 <FaShop />
               </LinkIcon>
@@ -39,9 +36,7 @@ const Header = () => {
             </LinkComponent>
           </li>
           <li>
-            <LinkComponent
-              to="/cart"
-            >
+            <LinkComponent to="/cart">
               <LinkIcon>
                 <FaShoppingCart />
               </LinkIcon>
@@ -49,9 +44,7 @@ const Header = () => {
             </LinkComponent>
           </li>
           <li>
-            <LinkComponent
-              to="/my-account"
-            >
+            <LinkComponent to="/my-account">
               <LinkIcon>
                 <FaUser />
               </LinkIcon>

@@ -1,11 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useItemsStore } from '@/stores/itemsStore';
+import { fetchItems } from '@/api/fetchItems';
 import Home from '@/pages/Home';
 import MyAccount from '@/pages/MyAccount';
 import Products from '@/pages/Products';
 import Cart from '@/pages/Cart';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-
 
 function App() {
   return (
