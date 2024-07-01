@@ -4,8 +4,12 @@ import { Link } from 'react-router-dom';
 import { usePageStore } from '@/stores/pageStore.js';
 
 const Header = () => {
+  const { pages } = usePageStore();
+
+
   return (
     <header className="flex bg-slate-100 shadow-md shadow-slate-200 py-4 px-2 top-0 left-0 w-full items-center justify-between h-[70px] dark:bg-gray-800 dark:shadow-gray-700 z-[90] absolute">
+
       <div className="flex items-center gap-2">
         <img
           src="/logo/1024.png"
@@ -17,41 +21,15 @@ const Header = () => {
           <strong className="text-bold text-3xl text-primary">N</strong>et
         </h1>
       </div>
-      <nav className="flex flex-grow items-center justify-end mr-1">
-        <ul className="flex gap-2 md:gap-4">
-          <li>
-            <LinkComponent to="/">
+      <nav className="flex flex-grow items-center justify-end mr-1 gap-2">
+          {pages.map((page, index) => (
+            <LinkComponent key={index} to={page.path}>
               <LinkIcon>
-                <FaHome />
+                <page.icon />
               </LinkIcon>
-              <LinkTitle>Home</LinkTitle>
+              <LinkTitle>{page.name}</LinkTitle>
             </LinkComponent>
-          </li>
-          <li>
-            <LinkComponent to="/products">
-              <LinkIcon>
-                <FaShop />
-              </LinkIcon>
-              <LinkTitle>Products</LinkTitle>
-            </LinkComponent>
-          </li>
-          <li>
-            <LinkComponent to="/cart">
-              <LinkIcon>
-                <FaShoppingCart />
-              </LinkIcon>
-              <LinkTitle>Cart</LinkTitle>
-            </LinkComponent>
-          </li>
-          <li>
-            <LinkComponent to="/my-account">
-              <LinkIcon>
-                <FaUser />
-              </LinkIcon>
-              <LinkTitle>My Account</LinkTitle>
-            </LinkComponent>
-          </li>
-        </ul>
+          ))}
       </nav>
     </header>
   );
