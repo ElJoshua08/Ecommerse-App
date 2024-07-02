@@ -1,5 +1,3 @@
-import { FaHome, FaShoppingCart, FaUser } from 'react-icons/fa';
-import { FaShop } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import { usePageStore } from '@/stores/pageStore.js';
 

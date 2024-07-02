@@ -8,10 +8,6 @@ import { useEffect } from 'react';
 import { useUserStore } from '@/stores/userStore';
 import { fetchUser } from '@/api/fetchUser';
 import { usePageStore } from '@/stores/pageStore';
-import Home from '@/pages/Home';
-import MyAccount from '@/pages/MyAccount';
-import Products from '@/pages/Products';
-import Cart from '@/pages/Cart';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -28,6 +24,7 @@ function Location() {
 
 function App() {
   const { setUser, user } = useUserStore();
+  const { pages } = usePageStore();
 
   useEffect(() => {
     const getUser = async () => {
@@ -50,22 +47,13 @@ function App() {
         mt-[70px] relative mb-[40px]"
         >
           <Routes>
-            <Route
-              path="/"
-              element={<Home />}
-            />
-            <Route
-              path="/my-account"
-              element={<MyAccount />}
-            />
-            <Route
-              path="/products"
-              element={<Products />}
-            />
-            <Route
-              path="/cart"
-              element={<Cart />}
-            />
+            {pages.map((page, index) => (
+              <Route
+                key={index}
+                path={page.path}
+                element={<page.element />}
+              />
+            ))}
           </Routes>
         </div>
         <Footer />

@@ -31,10 +31,9 @@ const Home = () => {
 
         {/* Why choose ShopNet */}
         <WhyUseShopNet theme={theme} />
-        
       </main>
     </>
   );
 };
 
-export default Home;
+export { Home };

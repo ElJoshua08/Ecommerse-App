@@ -1,4 +1,4 @@
-import CardSkeleton from "@/components/CardSkeleton";
+import CardSkeleton from '@/components/CardSkeleton';
 
 const MyAccount = () => {
   return (
@@ -9,4 +9,4 @@ const MyAccount = () => {
   );
 };
 
-export default MyAccount;
+export { MyAccount };
