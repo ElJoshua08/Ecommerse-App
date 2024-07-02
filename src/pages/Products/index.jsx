@@ -13,6 +13,10 @@ const Products = () => {
   const [ratingFilter, setRatingFilter] = useState(0);
   const [loading, setLoading] = useState(items.length === 0);
 
+  const cardSkeletons = Array(4/* Total Cards */).fill(0).map((_, index) => (
+    <CardSkeleton key={index} />
+  ));
+
   useEffect(() => {
     const getItems = async () => {
       setLoading(true);
@@ -59,12 +63,7 @@ const Products = () => {
       <div className="flex flex-wrap flex-row justify-center gap-4 items-start w-full relative top-[-18px] px-4 py-2">
         {loading ? (
           <>
-            <CardSkeleton />
-            <CardSkeleton />
-            <CardSkeleton />
-            <CardSkeleton />
-            <CardSkeleton />
-            <CardSkeleton />
+            {cardSkeletons}
           </>
         ) : filteredItems.length > 0 ? (
           filteredItems.map((item) => (
