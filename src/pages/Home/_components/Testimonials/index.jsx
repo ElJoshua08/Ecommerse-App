@@ -134,4 +134,5 @@ const TestimonialCard = ({ testimonial }) => {
     </div>
   );
 };
+
 export { Testimonials };
