@@ -1,6 +1,10 @@
-import { Stars } from "@/components/Stars";
+import { Stars } from '@/components/Stars';
+import { useThemePreference } from '@/hooks/useThemePreference';
+
 
 const Testimonials = () => {
+  const theme = useThemePreference();
+
   const testimonials = [
     {
       name: 'Alice Johnson',
@@ -45,15 +49,50 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="flex flex-row items-center justify-start gap-4 w-full h-fit py-12 flex-shrink-0 bg-slate-100 relative  mt-4 dark:bg-slate-700 px-6">
-      {testimonials.map((testimonial, index) => {
-        return (
-          <TestimonialCard
-            key={index}
-            testimonial={testimonial}
-          />
-        );
-      })}
+    <section className="flex flex-col items-center justify-start gap-2 w-full h-fit py-6 flex-shrink-0 bg-slate-100 relative dark:bg-slate-700 px-6">
+      {/* Section decoration */}
+      <img
+        src={`/waves/${
+          theme ? (theme == 'dark' ? 'dark' : 'light') : 'dark'
+        }/testimonialsTop.png`}
+        alt="wave"
+        className="absolute top-0 translate-y-[-97%] left-0 w-full"
+      />
+
+      {/* Title */}
+      <h1 className="text-7xl text-center font-normal text-slate-600 dark:text-slate-300 leading-[0.8]">
+        See what our{' '}
+        <span className=" text-center text-secondary-dark font-semibold">
+          customers
+        </span>{' '}
+        say about us
+      </h1>
+      {/* Happy customers */}
+      <div className="flex flex-row items-center justify-center gap-2 w-full">
+        <h3 className="text-lg font-semibold text-slate-500 dark:text-slate-200">
+          <span className="text-primary">+1300</span> Happy Customers
+        </h3>
+      </div>
+      {/* Testimonials */}
+      <div className="flex flex-row items-center justify-start gap-4 w-full h-fit py-12 flex-shrink-0 bg-slate-100 relative  mt-4 dark:bg-slate-700 px-6">
+        {testimonials.map((testimonial, index) => {
+          return (
+            <TestimonialCard
+              key={index}
+              testimonial={testimonial}
+            />
+          );
+        })}
+      </div>
+
+      {/* Section decoration */}
+      <img
+        src={`/waves/${
+          theme ? (theme == 'dark' ? 'dark' : 'light') : 'dark'
+        }/testimonialsBottom.png`}
+        alt="wave"
+        className="absolute bottom-0 left-0 w-full translate-y-full z-[1]"
+      />
     </section>
   );
 };
@@ -86,7 +125,10 @@ const TestimonialCard = ({ testimonial }) => {
 
         {/* Rating */}
         <div className="flex flex-row items-center justify-center gap-2 w-full">
-          <Stars rating={testimonial.rate} className="text-xl mt-1" />
+          <Stars
+            rating={testimonial.rate}
+            className="text-xl mt-1"
+          />
         </div>
       </div>
     </div>

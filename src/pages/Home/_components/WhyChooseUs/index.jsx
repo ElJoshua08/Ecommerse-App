@@ -1,5 +1,4 @@
-import { useUserStore } from '@/stores/userStore';
-import { useThemePreference } from '../../../../hooks/useThemePreference';
+import { useThemePreference } from '@/hooks/useThemePreference';
 
 const WhyChooseUs = () => {
   const theme = useThemePreference();
@@ -13,12 +12,12 @@ const WhyChooseUs = () => {
   };
 
   return (
-    <section className="flex flex-col items-center justify-start pt-12 gap-4 w-full flex-shrink-0 bg-slate-200 relative  mt-4 dark:bg-slate-800 0">
+    <section className="flex flex-col items-center justify-start pt-12 gap-4 w-full px-4 flex-shrink-0 bg-slate-200 relative  mt-4 dark:bg-slate-800 *:z-10">
       {/* Section decoration */}
       <img
         src={`/waves/${
           theme ? (theme == 'dark' ? 'dark' : 'light') : 'dark'
-        }/homeSection2.png`}
+        }/whyChooseUs.png`}
         alt="wave"
         className="absolute top-0 translate-y-[-97%] left-0 w-full z-[1]"
       />
@@ -61,10 +60,10 @@ const Card = ({ title, description, icon, inverse }) => {
       <img
         src={icon}
         alt="icon"
-        className="w-64 aspect-square drop-shadow-card"
+        className="w-1/5 max-w-64 aspect-square drop-shadow-card"
       />
       {/* Card content */}
-      <div className="flex flex-col items-center justify-center gap-2 w-2/3 text-center bg-slate-300 dark:bg-slate-700 p-4 rounded-lg border-2 border-slate-400 dark:border-slate-600 shadow-lg shadow-slate-300 dark:shadow-slate-600/50">
+      <div className="flex flex-col items-center justify-center gap-2 w-2/3 text-center bg-slate-300 dark:bg-slate-900 p-4 rounded-lg border-2 border-slate-400 dark:border-slate-600 shadow-lg shadow-slate-300 dark:shadow-slate-600/50">
         <h3 className="text-center text-5xl text-slate-500 dark:text-slate-200 font-bold">
           {title}
         </h3>

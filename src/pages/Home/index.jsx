@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useItemsStore } from '@/stores/itemsStore';
-import { useUserStore } from '../../stores/userStore';
 import { fetchItems } from '@/api/fetchItems';
 import { WhyChooseUs } from './_components/WhyChooseUs';
 import { Main } from './_components/Main';
 import { Testimonials } from './_components/Testimonials';
+import { ContactUs } from './_components/ContactUs';
 
 const Home = () => {
   const { items, setItems } = useItemsStore();
@@ -32,6 +32,9 @@ const Home = () => {
 
         {/* Testimonials */}
         <Testimonials />
+
+        {/* Contact Us */}
+        <ContactUs />
       </main>
     </>
   );
