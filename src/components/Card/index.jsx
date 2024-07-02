@@ -1,23 +1,7 @@
 import { FaRegStar, FaStar, FaStarHalfAlt } from 'react-icons/fa';
+import { Stars } from '@/components/Stars';
 
 const Card = ({ item }) => {
-  const fullStars = Math.floor(item.rating.rate);
-  const halfStar = item.rating.rate % 1 >= 0.5;
-  const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
-
-  const stars = [
-    ...Array(fullStars).fill(<FaStar className="text-yellow-500" />),
-    ...(halfStar
-      ? [
-          <FaStarHalfAlt
-            className="text-yellow-500"
-            key={1}
-          />,
-        ]
-      : []),
-    ...Array(emptyStars).fill(<FaRegStar className="text-slate-400" />),
-  ];
-
   return (
     <div className="flex flex-row items-center justify-between bg-slate-200 w-96 max-w-[400px] min-w-52 h-48 rounded-lg flex-shrink-0 flex-grow shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out cursor-pointer dark:bg-slate-800 dark:shadow-slate-600/50 dark:hover:shadow-slate-600/50">
       {/* Card Image and Category */}
@@ -40,9 +24,7 @@ const Card = ({ item }) => {
         </h1>
         {/* Card Rate and Count */}
         <div className="flex flex-row justify-center gap-1 items-center">
-          {stars.map((star, index) => (
-            <span key={index}>{star}</span>
-          ))}
+          <Stars rating={item.rating.rate} />
           <p className="text-sm text-slate-700 flex items-center h-full dark:text-slate-400">
             {item.rating.count} reviews
           </p>

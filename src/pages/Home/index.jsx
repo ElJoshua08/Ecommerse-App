@@ -4,10 +4,10 @@ import { useUserStore } from '../../stores/userStore';
 import { fetchItems } from '@/api/fetchItems';
 import { WhyChooseUs } from './_components/WhyChooseUs';
 import { Main } from './_components/Main';
+import { Testimonials } from './_components/Testimonials';
 
 const Home = () => {
   const { items, setItems } = useItemsStore();
-
 
   useEffect(() => {
     const getItems = async () => {
@@ -27,8 +27,11 @@ const Home = () => {
         {/* Main Content */}
         <Main />
 
-        {/* Why choose ShopNet */}
+        {/* Why choose Us */}
         <WhyChooseUs />
+
+        {/* Testimonials */}
+        <Testimonials />
       </main>
     </>
   );

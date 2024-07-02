@@ -13,7 +13,7 @@ const WhyChooseUs = () => {
   };
 
   return (
-    <section className="flex flex-col items-center justify-start pt-12 gap-4 w-full min-h-screen flex-shrink-0 bg-slate-200 relative  mt-4 dark:bg-slate-800 0">
+    <section className="flex flex-col items-center justify-start pt-12 gap-4 w-full flex-shrink-0 bg-slate-200 relative  mt-4 dark:bg-slate-800 0">
       {/* Section decoration */}
       <img
         src={`/waves/${
