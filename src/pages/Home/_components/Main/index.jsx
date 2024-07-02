@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const Main = () => {
   return (
@@ -19,17 +19,12 @@ const Main = () => {
           className="w-full rounded-lg aspect-square p-8 drop-shadow-card"
         />
         <h3 className="relative top-[-60px] text-center text-xl text-slate-500 font-light z-10">
-          <strong className="text-slate-600 dark:text-slate-200">
-            Fast
-          </strong>{' '}
-          -{' '}
+          <strong className="text-slate-600 dark:text-slate-200">Fast</strong> -{' '}
           <strong className="text-slate-600 dark:text-slate-200">
             Affordable
           </strong>{' '}
           -{' '}
-          <strong className="text-slate-600 dark:text-slate-200">
-            Secure
-          </strong>
+          <strong className="text-slate-600 dark:text-slate-200">Secure</strong>
         </h3>
       </section>
 
@@ -41,5 +36,5 @@ const Main = () => {
     </section>
   );
 };
-  
-export default Main;
+
+export { Main };

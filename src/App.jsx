@@ -1,16 +1,16 @@
+import { useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   useLocation,
 } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useUserStore } from '@/stores/userStore';
-import { fetchUser } from '@/api/fetchUser';
-import { usePageStore } from '@/stores/pageStore';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 
+import { fetchUser } from '@/api/fetchUser';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+import { usePageStore } from '@/stores/pageStore';
+import { useUserStore } from '@/stores/userStore';
 function Location() {
   const location = useLocation();
   const setActualPage = usePageStore((state) => state.setActualPage);
