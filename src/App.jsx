@@ -11,6 +11,8 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { usePageStore } from '@/stores/pageStore';
 import { useUserStore } from '@/stores/userStore';
+import { useThemePreference } from './hooks/useThemePreference';
+
 function Location() {
   const location = useLocation();
   const setActualPage = usePageStore((state) => state.setActualPage);
@@ -25,6 +27,7 @@ function Location() {
 function App() {
   const { setUser, user } = useUserStore();
   const { pages } = usePageStore();
+
 
   useEffect(() => {
     const getUser = async () => {

@@ -2,14 +2,12 @@ import { useEffect } from 'react';
 import { useItemsStore } from '@/stores/itemsStore';
 import { useUserStore } from '../../stores/userStore';
 import { fetchItems } from '@/api/fetchItems';
-import { Main } from './_components/Main';
 import { WhyChooseUs } from './_components/WhyChooseUs';
+import { Main } from './_components/Main';
 
 const Home = () => {
   const { items, setItems } = useItemsStore();
-  const { user } = useUserStore();
 
-  let theme = user?.preferences?.theme;
 
   useEffect(() => {
     const getItems = async () => {
@@ -30,7 +28,7 @@ const Home = () => {
         <Main />
 
         {/* Why choose ShopNet */}
-        <WhyChooseUs theme={theme} />
+        <WhyChooseUs />
       </main>
     </>
   );

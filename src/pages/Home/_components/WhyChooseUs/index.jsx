@@ -1,4 +1,9 @@
-const WhyChooseUs = ({ theme }) => {
+import { useUserStore } from '@/stores/userStore';
+import { useThemePreference } from '../../../../hooks/useThemePreference';
+
+const WhyChooseUs = () => {
+  const theme = useThemePreference();
+
   const descriptions = {
     fast: 'At ShopNet, we prioritize speed. Our intuitive interface ensures quick browsing, seamless navigation, and rapid checkouts. With our efficient logistics, we guarantee that your orders are processed and delivered swiftly, so you can enjoy your purchases without unnecessary delays.',
     affordable:
