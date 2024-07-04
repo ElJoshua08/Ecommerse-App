@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { useUserStore } from '@/stores/userStore';
 import { Stars } from '@/components/Stars';
 
 const Card = ({ item }) => {
-  const { addItemToOrder } = useUserStore();
+  const { addItemToOrder, removeItemFromOrder} = useUserStore();
+  const [isInOrder, setIsInOrder] = useState(false);
 
   return (
     <div className="flex flex-row items-center justify-between bg-slate-200 w-96 max-w-[400px] min-w-52 h-48 rounded-lg flex-shrink-0 flex-grow shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out cursor-pointer dark:bg-slate-800 dark:shadow-slate-600/50 dark:hover:shadow-slate-600/50">
@@ -43,9 +45,26 @@ const Card = ({ item }) => {
         </p>
 
         {/* Add to cart button */}
-        <button onClick={() => addItemToOrder(item)} className="bg-secondary text-slate-100 rounded-md px-2 py-1 text-md tracking-wide right-[0.6rem] bottom-2 absolute font-semibold transition-colors duration-200 hover:bg-secondary-dark">
-          Add to cart
-        </button>
+        {isInOrder ? (
+          <p
+            onClick={() => {
+              setIsInOrder(!isInOrder);
+              removeItemFromOrder(item);
+            }}
+            className=" text-slate-100 rounded-md px-2 py-1 text-md tracking-wide right-[0.6rem] bottom-2 absolute font-semibold transition-colors duration-200 hover:text-slate-300 ">
+            In cart
+          </p>
+        ) : (
+          <button
+            onClick={() => {
+              setIsInOrder(!isInOrder);
+              addItemToOrder(item);
+            }}
+            className="bg-secondary text-slate-100 rounded-md px-2 py-1 text-md tracking-wide right-[0.6rem] bottom-2 absolute font-semibold transition-colors duration-200 hover:bg-secondary-dark"
+          >
+            Add to cart
+          </button>
+        )}
       </div>
     </div>
   );
