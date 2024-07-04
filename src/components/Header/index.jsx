@@ -62,7 +62,7 @@ const LinkTitle = ({ children }) => {
 
 const LinkIcon = ({ children }) => {
   return (
-    <div className="flex items-center justify-center w-8 h-8 bg-gray-200 rounded-md md:rounded-none md:bg-transparent dark:bg-slate-700 dark:md:bg-transparent dark:text-slate-200 text-gray-700">
+    <div className="flex items-center justify-center w-8 h-8 rounded-md md:rounded-none md:bg-transparent  dark:md:bg-transparent dark:text-slate-200 text-gray-700">
       {children}
     </div>
   );

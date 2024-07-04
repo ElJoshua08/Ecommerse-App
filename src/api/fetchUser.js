@@ -4,6 +4,8 @@ export const fetchUser = async () => {
     name: 'Test User',
     address: '123 Main St, Anytown, USA',
 
+    orders: [],
+
     preferences: {
       theme: window.matchMedia('(prefers-color-scheme: dark)').matches,
       currency: 'USD',

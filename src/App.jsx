@@ -11,7 +11,6 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { usePageStore } from '@/stores/pageStore';
 import { useUserStore } from '@/stores/userStore';
-import { useThemePreference } from './hooks/useThemePreference';
 
 function Location() {
   const location = useLocation();
@@ -40,6 +39,8 @@ function App() {
       getUser();
     }
   }, [setUser, user]);
+  
+  console.log(user);
 
   return (
     <div className="App bg-white dark:bg-gray-900 dark:text-white relative overflow-auto min-h-screen">
