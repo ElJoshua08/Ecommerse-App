@@ -1,10 +1,9 @@
-import { Stars } from '@/components/Stars';
 import { useThemePreference } from '@/hooks/useThemePreference';
-
+import { Stars } from '@/components/Stars';
+import { useState } from 'react';
 
 const Testimonials = () => {
   const theme = useThemePreference();
-
   const testimonials = [
     {
       name: 'Alice Johnson',
@@ -48,12 +47,29 @@ const Testimonials = () => {
     },
   ];
 
+  const [startX, setStartX] = useState(0); // Track initial mouse position
+  const [translateX, setTranslateX] = useState(0); // Track translateX position
+
+
+  const handleMouseDown = (e) => {
+    setStartX(e.clientX); // Record initial mouse position on mouse down
+  };
+
+  const handleMouseUp = (e) => {
+    const mouseMovement = e.clientX - startX; // Calculate mouse movement
+    let newTranslateX = translateX + mouseMovement; // Update translateX state with mouse movement
+    if (newTranslateX < -675) newTranslateX = 675; // Limit translateX to -675
+    if (newTranslateX > 675) newTranslateX = -675; // Limit translateX to 675
+    setTranslateX(newTranslateX); // Update translateX state with mouse movement
+    setStartX(0); // Reset startX state after mouse up
+  };
+
   return (
     <section className="flex flex-col items-center justify-start gap-2 w-full h-fit py-6 flex-shrink-0 bg-slate-100 relative dark:bg-slate-700 px-6">
       {/* Section decoration */}
       <img
         src={`/waves/${
-          theme ? (theme == 'dark' ? 'dark' : 'light') : 'dark'
+          theme === 'dark' ? 'dark' : 'light'
         }/testimonialsTop.png`}
         alt="wave"
         className="absolute top-0 translate-y-[-97%] left-0 w-full"
@@ -74,21 +90,26 @@ const Testimonials = () => {
         </h3>
       </div>
       {/* Testimonials */}
-      <div className="flex flex-row items-center justify-start gap-4 w-full h-fit py-12 flex-shrink-0 bg-slate-100 relative  mt-4 dark:bg-slate-700 px-6">
-        {testimonials.map((testimonial, index) => {
-          return (
+      <div className="overflow-hidden flex flex-wrap justify-center *:select-none cursor-pointer mt-10">
+        <ul
+          onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
+          className={`flex gap-5 transition-transform duration-500`}
+          style={{ transform: `translateX(${translateX * 1.5}px)` }}
+        >
+          {[...testimonials, ...testimonials].map((testimonial, index) => (
             <TestimonialCard
               key={index}
               testimonial={testimonial}
             />
-          );
-        })}
+          ))}
+        </ul>
       </div>
 
       {/* Section decoration */}
       <img
         src={`/waves/${
-          theme ? (theme == 'dark' ? 'dark' : 'light') : 'dark'
+          theme === 'dark' ? 'dark' : 'light'
         }/testimonialsBottom.png`}
         alt="wave"
         className="absolute bottom-0 left-0 w-full translate-y-full z-[1]"
@@ -99,17 +120,15 @@ const Testimonials = () => {
 
 const TestimonialCard = ({ testimonial }) => {
   return (
-    <div className="flex flex-col flex-shrink-0 items-center justify-start gap-4 w-72 h-56 bg-slate-100 dark:bg-slate-800 p-2 rounded-lg border-2 border-slate-400 dark:border-slate-600 shadow-xl shadow-slate-300 dark:shadow-slate-600/50">
+    <li className="flex flex-col flex-shrink-0 items-center justify-start gap-4 w-72 h-56 bg-slate-100 dark:bg-slate-800 p-2 rounded-lg border-2 border-slate-400 dark:border-slate-600 shadow-xl shadow-slate-300 dark:shadow-slate-600/50">
       {/* Name, avatar, and date */}
       <div className="flex flex-row items-center justify-between gap-2 w-full">
         <img
           src={testimonial.avatar}
           alt="avatar"
-          className="w-12 rounded-full object-cover
-        aspect-square border-slate-400 dark:border-slate-600 shadow-xl shadow-slate-300 dark:shadow-slate-600/50"
+          className="w-12 rounded-full object-cover aspect-square border-slate-400 dark:border-slate-600 shadow-xl shadow-slate-300 dark:shadow-slate-600/50"
         />
         <div className="flex flex-row items-center justify-start gap-2 w-full">
-          {/* TODO Here should the avatar be */}
           <h1>{testimonial.name}</h1>
         </div>
         <p className="text-center text-xs text-slate-500 dark:text-slate-400 self-start font-light min-w-fit">
@@ -131,7 +150,7 @@ const TestimonialCard = ({ testimonial }) => {
           />
         </div>
       </div>
-    </div>
+    </li>
   );
 };
 

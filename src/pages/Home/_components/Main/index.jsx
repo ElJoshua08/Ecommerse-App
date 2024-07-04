@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 const Main = () => {
   return (
     // Main Content
-    <section className="flex flex-row items-center justify-around min-h-[calc(100vh-70px)] w-full relative px-5">
+    <section className="flex flex-row items-center justify-around min-h-[calc(100vh-70px)] w-full relative px-5 *:z-20">
       <h1 className="flex-grow text-center text-6xl text-slate-600 dark:text-slate-200 max-w-xl">
         WELCOME TO{' '}
         <strong className="animate-wave bg-[length:200%_100%] text-transparent bg-clip-text bg-gradient-to-r from-primary-dark to-amber-400 text-7xl">
