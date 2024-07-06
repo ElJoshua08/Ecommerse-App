@@ -3,8 +3,9 @@ import { useUserStore } from '@/stores/userStore';
 import { Stars } from '@/components/Stars';
 
 const Card = ({ item }) => {
-  const { addItemToOrder, removeItemFromOrder } = useUserStore();
-  const [isInOrder, setIsInOrder] = useState(false);
+  const { addItemToOrder, removeItemFromOrder, isItemInOrder } = useUserStore();
+  const [isInOrder, setIsInOrder] = useState(isItemInOrder(item));
+
 
   return (
     <div className="flex flex-row items-center justify-between bg-slate-200 w-72 max-w-[400px] min-w-52 h-48 rounded-lg flex-shrink-0 flex-grow shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out cursor-pointer dark:bg-slate-800 dark:shadow-slate-600/50 dark:hover:shadow-slate-600/50">

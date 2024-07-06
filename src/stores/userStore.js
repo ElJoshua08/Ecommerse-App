@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { fetchUser } from '@/api/fetchUser';
 
-export const useUserStore = create((set) => ({
+export const useUserStore = create((set, get) => ({
   user: null, // Initial value
   setUser: (user) => set({ user }),
   setPreferredTheme: (theme) =>
@@ -21,13 +21,10 @@ export const useUserStore = create((set) => ({
         orders: [...(state.user.orders || []), item],
       },
     })),
-  isItemInOrder: (item) =>
-    set((state) => ({
-      user: {
-        ...state.user,
-        orders: state.user.orders.filter((order) => order.id === item.id),
-      },
-    })),
+  isItemInOrder: (item) => {
+    const user = get().user;
+    return user.orders.some((order) => order.id === item.id);
+  },
   removeItemFromOrder: (item) =>
     set((state) => ({
       user: {
@@ -39,5 +36,4 @@ export const useUserStore = create((set) => ({
     const userData = await fetchUser();
     set({ user: userData });
   },
-
 }));
