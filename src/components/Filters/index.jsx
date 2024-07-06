@@ -1,11 +1,15 @@
-import { SearchBar } from '@/components/SearchBar';
+import { SearchBar } from '@/components/SearchBar'
+import { FaRegStar, FaStar } from 'react-icons/fa'
+import { Range } from 'react-range'
 
 const Filters = ({
   onSearch,
-  onFilterselect,
+  onFilterSelect,
   onRatingFilterSelect,
   filter,
   ratingFilter,
+  priceRange,
+  onPriceRangeChange,
 }) => {
   const categories = [
     'all',
@@ -13,61 +17,73 @@ const Filters = ({
     'jewelery',
     "men's clothing",
     "women's clothing",
-  ];
+  ]
 
   return (
-    <div className="flex flex-col justify-between items-center gap-8 max-h-screen flex-grow px-2 py-4 border-lime-500 border-2">
+    <div className="flex max-h-screen w-4/12 max-w-56 flex-grow flex-col items-center justify-between gap-6 px-2 py-4">
       {/* Search */}
       <SearchBar onSearch={onSearch} />
 
       {/* Categories Wrapper*/}
-      <div className="flex flex-col justify-start items-start w-full gap-2">
-        {/* Category title */}
-        <h3 className="text-lg font-medium text-slate-500 ">Categories</h3>
-
+      <CategoryFilter filterName="Categories">
         {/* Categories */}
-        <div className="flex flex-col justify-center gap-2">
+        <div className="flex flex-col justify-center gap-2 mt-2">
           {categories.map((category, index) => (
             <CategoryButton
               key={index}
               category={category}
               filter={filter}
-              onClick={() => onFilterselect(category)}
+              onClick={() => onFilterSelect(category)}
             />
           ))}
         </div>
-      </div>
+      </CategoryFilter>
+
       {/* Rating */}
-      <div className="flex flex-row justify-center items-center gap-2">
-        <span className="text-slate-500">Min Rating</span>
-        <input
-          type="number"
-          min="0"
-          max="5"
-          step="0.5"
-          value={ratingFilter}
-          onChange={(e) => onRatingFilterSelect(Number(e.target.value))}
-          className="rounded-md border-gray-300 text-gray-700 focus:border-primary focus:ring-primary 
-          focus:ring-2 w-fit pl-2"
-        />
-      </div>
+      <CategoryFilter filterName="Min Rating">
+        <div className="flex flex-row justify-center gap-2">
+          {Array.from({ length: 5 }, (_, i) => (
+            <span key={i} onClick={() => onRatingFilterSelect(i + 1)}>
+              {ratingFilter >= i + 1 ? (
+                <FaStar className="cursor-pointer text-lg text-yellow-500" />
+              ) : (
+                <FaRegStar className="cursor-pointer text-lg text-slate-600 hover:text-slate-500" />
+              )}
+            </span>
+          ))}
+        </div>
+      </CategoryFilter>
+
+      {/* Price */}
+      <CategoryFilter filterName="Price">
+      </CategoryFilter>
     </div>
-  );
-};
+  )
+}
+
+const CategoryFilter = ({ filterName, children }) => {
+  return (
+    <div className="flex w-full flex-col items-start justify-start">
+      <h3 className="text-2xl font-semibold text-slate-600 dark:text-slate-300">
+        {filterName}
+      </h3>
+      <div className="flex flex-col justify-center gap-2">{children}</div>
+    </div>
+  )
+}
 
 const CategoryButton = ({ category, filter, onClick }) => (
   <button
-    className={`
-      ${
-        filter === category
-          ? 'bg-primary-dark text-slate-100'
-          : 'bg-slate-200 text-slate-500 hover:bg-slate-300 hover:text-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-slate-100'
-      } 
-    font-medium rounded-sm px-4 h-full text-lg transition `}
+    className={`${
+      filter === category
+        ? 'bg-slate-800 text-secondary-dark'
+        : 'text-slate-500 dark:text-slate-300 dark:hover:text-slate-400'
+    } h-full rounded-sm px-2 text-left text-lg font-medium transition`}
     onClick={onClick}
   >
     {category}
   </button>
-);
+)
 
-export default Filters;
+
+export { Filters }

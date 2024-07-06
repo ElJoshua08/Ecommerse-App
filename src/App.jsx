@@ -40,7 +40,6 @@ function App() {
     }
   }, [setUser, user]);
   
-  console.log(user);
 
   return (
     <div className="App bg-white dark:bg-gray-900 dark:text-white relative overflow-auto min-h-screen">
