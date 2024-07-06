@@ -1,6 +1,6 @@
+import { useState } from 'react'
 import { SearchBar } from '@/components/SearchBar'
 import { FaRegStar, FaStar } from 'react-icons/fa'
-import { Range } from 'react-range'
 
 const Filters = ({
   onSearch,
@@ -19,15 +19,25 @@ const Filters = ({
     "women's clothing",
   ]
 
-  return (
-    <div className="flex max-h-screen w-4/12 max-w-56 flex-grow flex-col items-center justify-between gap-6 px-2 py-4">
-      {/* Search */}
-      <SearchBar onSearch={onSearch} />
+  const [openModal, setOpenModal] = useState(false)
+  const [isInMobile, setIsInMobile] = useState(false)
 
+  addEventListener('resize', () => {
+    console.log(innerWidth)
+    setIsInMobile(innerWidth < 480)
+  })
+
+  
+
+  //! PREVIUS CODE
+  /*"flex md:max-h-screen md:w-4/12 md:max-w-56 flex-grow mdflex-col items-center justify-between gap-6 px-2 py-4"*/
+
+  return !isInMobile ? (
+    <div>
       {/* Categories Wrapper*/}
       <CategoryFilter filterName="Categories">
         {/* Categories */}
-        <div className="flex flex-col justify-center gap-2 mt-2">
+        <div className="mt-2 flex flex-col justify-center gap-2">
           {categories.map((category, index) => (
             <CategoryButton
               key={index}
@@ -56,8 +66,14 @@ const Filters = ({
 
       {/* Price */}
       <CategoryFilter filterName="Price">
+        <PriceRange
+          priceRange={priceRange}
+          onPriceRangeChange={onPriceRangeChange}
+        />
       </CategoryFilter>
     </div>
+  ) : (
+    <h1>Mobile</h1>
   )
 }
 
@@ -85,5 +101,15 @@ const CategoryButton = ({ category, filter, onClick }) => (
   </button>
 )
 
+const PriceRange = ({ priceRange, onPriceRangeChange }) => {
+  return (
+    <div className="flex flex-row justify-center gap-2">
+      {/* Min price */}
+      <p>{priceRange[0]}€</p>
+      <input type="range" min="0" max="100" />
+      <p>{priceRange[1]}€</p>
+    </div>
+  )
+}
 
 export { Filters }
