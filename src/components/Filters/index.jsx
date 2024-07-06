@@ -1,4 +1,4 @@
-import SearchBar from '@/components/SearchBar';
+import { SearchBar } from '@/components/SearchBar';
 
 const Filters = ({
   onSearch,
@@ -16,20 +16,26 @@ const Filters = ({
   ];
 
   return (
-    <div className="flex flex-row justify-between items-center gap-8 h-10 w-full mb-4 relative mt-4 px-4">
+    <div className="flex flex-col justify-between items-center gap-8 max-h-screen flex-grow px-2 py-4 border-lime-500 border-2">
       {/* Search */}
       <SearchBar onSearch={onSearch} />
 
-      {/* Categories */}
-      <div className="flex flex-row justify-center h-full gap-4">
-        {categories.map((category, index) => (
-          <CategoryButton
-            key={index}
-            category={category}
-            filter={filter}
-            onClick={() => onFilterselect(category)}
-          />
-        ))}
+      {/* Categories Wrapper*/}
+      <div className="flex flex-col justify-start items-start w-full gap-2">
+        {/* Category title */}
+        <h3 className="text-lg font-medium text-slate-500 ">Categories</h3>
+
+        {/* Categories */}
+        <div className="flex flex-col justify-center gap-2">
+          {categories.map((category, index) => (
+            <CategoryButton
+              key={index}
+              category={category}
+              filter={filter}
+              onClick={() => onFilterselect(category)}
+            />
+          ))}
+        </div>
       </div>
       {/* Rating */}
       <div className="flex flex-row justify-center items-center gap-2">
@@ -57,7 +63,7 @@ const CategoryButton = ({ category, filter, onClick }) => (
           ? 'bg-primary-dark text-slate-100'
           : 'bg-slate-200 text-slate-500 hover:bg-slate-300 hover:text-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-slate-100'
       } 
-    font-medium rounded-md px-4 h-full text-base transition `}
+    font-medium rounded-sm px-4 h-full text-lg transition `}
     onClick={onClick}
   >
     {category}

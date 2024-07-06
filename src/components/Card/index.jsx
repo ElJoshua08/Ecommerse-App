@@ -3,11 +3,11 @@ import { useUserStore } from '@/stores/userStore';
 import { Stars } from '@/components/Stars';
 
 const Card = ({ item }) => {
-  const { addItemToOrder, removeItemFromOrder} = useUserStore();
+  const { addItemToOrder, removeItemFromOrder } = useUserStore();
   const [isInOrder, setIsInOrder] = useState(false);
 
   return (
-    <div className="flex flex-row items-center justify-between bg-slate-200 w-96 max-w-[400px] min-w-52 h-48 rounded-lg flex-shrink-0 flex-grow shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out cursor-pointer dark:bg-slate-800 dark:shadow-slate-600/50 dark:hover:shadow-slate-600/50">
+    <div className="flex flex-row items-center justify-between bg-slate-200 w-72 max-w-[400px] min-w-52 h-48 rounded-lg flex-shrink-0 flex-grow shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out cursor-pointer dark:bg-slate-800 dark:shadow-slate-600/50 dark:hover:shadow-slate-600/50">
       {/* Card Image and Category */}
       <div className="overflow-hidden flex-shrink-0 h-full w-2/5 flex flex-col justify-center items-start relative">
         <img
@@ -15,7 +15,7 @@ const Card = ({ item }) => {
           src={item.image}
           alt="Product Image"
         />
-        <p className="absolute bottom-1 right-1 z-[10] text-sm tracking-wide text-white bg-slate-800/70 backdrop-blur-lg rounded-lg px-2 py-1">
+        <p className="absolute bottom-1 right-1 z-[10] text-xs tracking-wide text-white bg-slate-800/70 backdrop-blur-lg rounded-lg px-2 py-1">
           {item.category}
         </p>
       </div>
@@ -51,7 +51,8 @@ const Card = ({ item }) => {
               setIsInOrder(!isInOrder);
               removeItemFromOrder(item);
             }}
-            className=" text-slate-100 rounded-md px-2 py-1 text-md tracking-wide right-[0.6rem] bottom-2 absolute font-semibold transition-colors duration-200 hover:text-slate-300 ">
+            className=" text-slate-400 rounded-md px-2 py-1 text-md tracking-wide right-[0.6rem] bottom-2 absolute font-semibold transition-colors duration-200 hover:text-slate-600 "
+          >
             In cart
           </p>
         ) : (

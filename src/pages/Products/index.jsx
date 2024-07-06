@@ -13,9 +13,9 @@ const Products = () => {
   const [ratingFilter, setRatingFilter] = useState(0);
   const [loading, setLoading] = useState(items.length === 0);
 
-  const cardSkeletons = Array(4/* Total Cards */).fill(0).map((_, index) => (
-    <CardSkeleton key={index} />
-  ));
+  const cardSkeletons = Array(4 /* Total Cards */)
+    .fill(0)
+    .map((_, index) => <CardSkeleton key={index} />);
 
   useEffect(() => {
     const getItems = async () => {
@@ -51,7 +51,7 @@ const Products = () => {
   );
 
   return (
-    <>
+    <div className="flex flex-row items-start justify-between h-full w-full">
       <Filters
         onSearch={onSearch}
         onFilterselect={onFilterSelect}
@@ -60,11 +60,9 @@ const Products = () => {
         ratingFilter={ratingFilter}
       />
 
-      <div className="flex flex-wrap flex-row justify-center gap-4 items-start w-full relative top-[-18px] px-4 py-2">
+      <div className="flex flex-wrap flex-row justify-center w-[calc(100%-96px)] gap-4 items-start relative right-0 p-4">
         {loading ? (
-          <>
-            {cardSkeletons}
-          </>
+          <>{cardSkeletons}</>
         ) : filteredItems.length > 0 ? (
           filteredItems.map((item) => (
             <Card
@@ -78,7 +76,7 @@ const Products = () => {
           </h1>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
