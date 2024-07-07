@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { SearchBar } from '@/components/SearchBar'
 import { FaRegStar, FaStar } from 'react-icons/fa'
 import { MultiRangeSlider } from '@/components/MultiRangeSlider'
+import { useWindowSize } from '@/hooks/useWindowSize'
 
 const Filters = ({
   onSearch,
@@ -20,12 +21,11 @@ const Filters = ({
     "women's clothing",
   ]
 
-  const [openModal, setOpenModal] = useState(false)
-  const [isInMobile, setIsInMobile] = useState(false)
+  const { width } = useWindowSize()
 
-  addEventListener('resize', () => {
-    setIsInMobile(innerWidth < 480)
-  })
+  const [openModal, setOpenModal] = useState(false)
+  const [isInMobile, setIsInMobile] = useState(width < 480)
+
 
   //! PREVIUS CODE
   /*"flex md:max-h-screen md:w-4/12 md:max-w-56 flex-grow mdflex-col items-center justify-between gap-6 px-2 py-4"*/

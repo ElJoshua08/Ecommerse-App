@@ -1,9 +1,9 @@
-import { useThemePreference } from '@/hooks/useThemePreference';
-import { Stars } from '@/components/Stars';
-import { useState } from 'react';
+import { useThemePreference } from '@/hooks/useThemePreference'
+import { useState, useEffect, useRef } from 'react'
+import { Stars } from '@/components/Stars'
 
 const Testimonials = () => {
-  const theme = useThemePreference();
+  const theme = useThemePreference()
   const testimonials = [
     {
       name: 'Alice Johnson',
@@ -45,113 +45,97 @@ const Testimonials = () => {
       content:
         'Very good product, well-made and reliable. The support team was very responsive to my queries. Would definitely recommend to others.',
     },
-  ];
-
-  const [startX, setStartX] = useState(0); // Track initial mouse position
-  const [translateX, setTranslateX] = useState(0); // Track translateX position
-
-
-  const handleMouseDown = (e) => {
-    setStartX(e.clientX); // Record initial mouse position on mouse down
-  };
-
-  const handleMouseUp = (e) => {
-    const mouseMovement = e.clientX - startX; // Calculate mouse movement
-    let newTranslateX = translateX + mouseMovement; // Update translateX state with mouse movement
-    if (newTranslateX < -675) newTranslateX = 675; // Limit translateX to -675
-    if (newTranslateX > 675) newTranslateX = -675; // Limit translateX to 675
-    setTranslateX(newTranslateX); // Update translateX state with mouse movement
-    setStartX(0); // Reset startX state after mouse up
-  };
+  ]
 
   return (
-    <section className="flex flex-col items-center justify-start gap-2 w-full h-fit py-6 flex-shrink-0 bg-slate-100 relative dark:bg-slate-700 px-6">
+    <section className="relative flex h-fit w-full flex-shrink-0 flex-col items-center justify-start gap-2 bg-slate-100 px-6 py-10 dark:bg-slate-700">
       {/* Section decoration */}
       <img
-        src={`/waves/${
-          theme === 'dark' ? 'dark' : 'light'
-        }/testimonialsTop.png`}
+        src={`/waves/${theme === 'dark' ? 'dark' : 'light'}/testimonialsTop.png`}
         alt="wave"
-        className="absolute top-0 translate-y-[-97%] left-0 w-full"
+        className="absolute left-0 top-0 w-full translate-y-[-97%]"
       />
 
       {/* Title */}
-      <h1 className="text-7xl text-center font-normal text-slate-600 dark:text-slate-300 leading-[0.8]">
+      <h1 className="text-center text-7xl font-normal leading-[0.8] text-slate-600 dark:text-slate-300">
         See what our{' '}
-        <span className=" text-center text-secondary-dark font-semibold">
+        <span className="text-center font-semibold text-secondary-dark">
           customers
         </span>{' '}
         say about us
       </h1>
       {/* Happy customers */}
-      <div className="flex flex-row items-center justify-center gap-2 w-full">
+      <div className="flex w-full flex-row items-center justify-center gap-2">
         <h3 className="text-lg font-semibold text-slate-500 dark:text-slate-200">
           <span className="text-primary">+1300</span> Happy Customers
         </h3>
       </div>
       {/* Testimonials */}
-      <div className="overflow-hidden flex flex-wrap justify-center *:select-none cursor-pointer mt-10">
-        <ul
-          onMouseDown={handleMouseDown}
-          onMouseUp={handleMouseUp}
-          className={`flex gap-5 transition-transform duration-500`}
-          style={{ transform: `translateX(${translateX * 1.5}px)` }}
-        >
-          {[...testimonials, ...testimonials].map((testimonial, index) => (
-            <TestimonialCard
-              key={index}
-              testimonial={testimonial}
-            />
-          ))}
-        </ul>
-      </div>
+      <InfiniteScrollTestimonials testimonials={testimonials} />
 
       {/* Section decoration */}
       <img
-        src={`/waves/${
-          theme === 'dark' ? 'dark' : 'light'
-        }/testimonialsBottom.png`}
+        src={`/waves/${theme === 'dark' ? 'dark' : 'light'}/testimonialsBottom.png`}
         alt="wave"
-        className="absolute bottom-0 left-0 w-full translate-y-full z-[1]"
+        className="absolute bottom-0 left-0 z-[1] w-full translate-y-full"
       />
     </section>
-  );
-};
+  )
+}
+
+const InfiniteScrollTestimonials = ({ testimonials }) => {
+  const ulRef = useRef(null)
+
+  useEffect(() => {
+    const ul = ulRef.current
+    const duplicateUl = ul.cloneNode(true)
+    duplicateUl.setAttribute('aria-hidden', 'true')
+    ul.insertAdjacentElement('afterend', duplicateUl)
+    console.log('duplicating', ul, duplicateUl)
+  }, [])
+
+  return (
+    <div className="mt-10 flex cursor-pointer select-none  justify-center overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)] gap-5">
+      <ul ref={ulRef} className="animate-infinite-scroll flex flex-row gap-5">
+        {testimonials.map((testimonial, index) => (
+          <TestimonialCard key={index} testimonial={testimonial} />
+        ))}
+      </ul>
+    </div>
+  )
+}
 
 const TestimonialCard = ({ testimonial }) => {
   return (
-    <li className="flex flex-col flex-shrink-0 items-center justify-start gap-4 w-72 h-56 bg-slate-100 dark:bg-slate-800 p-2 rounded-lg border-2 border-slate-400 dark:border-slate-600 shadow-xl shadow-slate-300 dark:shadow-slate-600/50">
+    <li className="flex h-60 w-80 flex-shrink-0 flex-col items-center justify-start gap-4 rounded-lg border-2 border-slate-400 bg-slate-100 p-2 shadow-xl shadow-slate-300 dark:border-slate-600 dark:bg-slate-800 dark:shadow-slate-600/50">
       {/* Name, avatar, and date */}
-      <div className="flex flex-row items-center justify-between gap-2 w-full">
+      <div className="flex w-full flex-row items-center justify-between gap-2">
         <img
           src={testimonial.avatar}
           alt="avatar"
-          className="w-12 rounded-full object-cover aspect-square border-slate-400 dark:border-slate-600 shadow-xl shadow-slate-300 dark:shadow-slate-600/50"
+          className="aspect-square w-12 rounded-full border-slate-400 object-cover shadow-xl shadow-slate-300 dark:border-slate-600 dark:shadow-slate-600/50"
         />
-        <div className="flex flex-row items-center justify-start gap-2 w-full">
+        <div className="flex w-full flex-row items-center justify-start gap-2">
           <h1>{testimonial.name}</h1>
         </div>
-        <p className="text-center text-xs text-slate-500 dark:text-slate-400 self-start font-light min-w-fit">
+        <p className="min-w-fit self-start text-center text-xs font-light text-slate-500 dark:text-slate-400">
           {testimonial.date}
         </p>
       </div>
 
-      <div className="flex flex-col items-start justify-start gap-2 w-full">
+      <div className="flex w-full flex-col items-start justify-start gap-2">
         {/* Content */}
-        <p className="text-center text-ld leading-6 text-slate-400 dark:text-slate-300">
+        <p className="text-center text-lg leading-6 text-slate-400 dark:text-slate-300">
           {testimonial.content}
         </p>
 
         {/* Rating */}
-        <div className="flex flex-row items-center justify-center gap-2 w-full">
-          <Stars
-            rating={testimonial.rate}
-            className="text-xl mt-1"
-          />
+        <div className="flex w-full flex-row items-center justify-center gap-2">
+          <Stars rating={testimonial.rate} className="mt-1 text-xl" />
         </div>
       </div>
     </li>
-  );
-};
+  )
+}
 
-export { Testimonials };
+export { Testimonials }
