@@ -1,9 +1,9 @@
 const MyOrders = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className="text-3xl font-bold">Cart</h1>
+    <div className="flex h-screen w-full flex-row items-center justify-center">
+      {/* { User and Billing details } */}
     </div>
-  );
-};
+  )
+}
 
-export { MyOrders };
+export { MyOrders }

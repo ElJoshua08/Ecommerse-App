@@ -10,8 +10,8 @@ const Products = () => {
 
   const [search, setSearch] = useState('')
   const [filter, setFilter] = useState('all')
-  const [ratingFilter, setRatingFilter] = useState(0)
-  const [priceRange, setPriceRange] = useState([0, 100])
+  const [ratingFilter, setRatingFilter] = useState(1)
+  const [priceRange, setPriceRange] = useState({min: /* Search for item with the lowest price */ 0, max: /* Search for item with the highest price */ 100})
   const [loading, setLoading] = useState(items.length === 0)
 
   const cardSkeletons = Array(4 /* Total Cards */)
@@ -46,15 +46,21 @@ const Products = () => {
 
   const handlePriceRangeChange = (range) => setPriceRange(range)
 
+
   const filteredItems = items.filter(
     (item) =>
+      // Search for items inside category filter
       (filter === 'all' || item.category === filter) &&
+      // Search for items with rating >= ratingFilter
       item.rating.rate >= ratingFilter &&
+      // Search for items inside price range
+      (priceRange.min <= item.price && priceRange.max >= item.price) &&
+      // Search for items inside search value
       (search === '' || item.title.toLowerCase().includes(search.toLowerCase()))
   )
 
   return (
-    <div className="flex h-full w-full flex-row items-start justify-between">
+    <div className="flex h-full w-full flex-row items-start justify-between pl-2">
       <Filters
         onSearch={onSearch}
         onFilterselect={onFilterSelect}

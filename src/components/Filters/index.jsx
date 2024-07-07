@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { SearchBar } from '@/components/SearchBar'
 import { FaRegStar, FaStar } from 'react-icons/fa'
+import { MultiRangeSlider } from '@/components/MultiRangeSlider'
 
 const Filters = ({
   onSearch,
@@ -23,17 +24,16 @@ const Filters = ({
   const [isInMobile, setIsInMobile] = useState(false)
 
   addEventListener('resize', () => {
-    console.log(innerWidth)
     setIsInMobile(innerWidth < 480)
   })
-
-  
 
   //! PREVIUS CODE
   /*"flex md:max-h-screen md:w-4/12 md:max-w-56 flex-grow mdflex-col items-center justify-between gap-6 px-2 py-4"*/
 
   return !isInMobile ? (
-    <div>
+    <div className="flex flex-col items-center justify-start gap-4">
+      {/* Search Bar */}
+      <SearchBar onSearch={onSearch} className="mb-5 mt-5" />
       {/* Categories Wrapper*/}
       <CategoryFilter filterName="Categories">
         {/* Categories */}
@@ -103,11 +103,13 @@ const CategoryButton = ({ category, filter, onClick }) => (
 
 const PriceRange = ({ priceRange, onPriceRangeChange }) => {
   return (
-    <div className="flex flex-row justify-center gap-2">
-      {/* Min price */}
-      <p>{priceRange[0]}€</p>
-      <input type="range" min="0" max="100" />
-      <p>{priceRange[1]}€</p>
+    <div className="relative mt-2 flex flex-col justify-center gap-4">
+      <MultiRangeSlider min={0} max={100} onChange={onPriceRangeChange} />
+      {/* Prices */}
+      <div className="flex flex-row justify-between gap-2">
+        <p>{priceRange.min}€</p>
+        <p>{priceRange.max}€</p>
+      </div>
     </div>
   )
 }
