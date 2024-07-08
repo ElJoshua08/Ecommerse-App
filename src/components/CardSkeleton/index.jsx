@@ -1,10 +1,12 @@
 
 const CardSkeleton = () => {
   return (
-    <div className="relative flex flex-row items-center justify-between bg-slate-200 w-96 max-w-[400px] min-w-52 h-48 rounded-lg flex-shrink-0 flex-grow shadow-md duration-300 ease-in-out cursor-pointer dark:bg-slate-800 dark:shadow-slate-600/50 overflow-hidden">
+    <div className="relative flex flex-row items-center justify-between bg-slate-200 w-80 max-w-[400px] min-w-48 h-48 rounded-lg flex-shrink-0 flex-grow shadow-md duration-300 ease-in-out cursor-pointer dark:bg-slate-800 dark:shadow-slate-600/50 overflow-hidden"> 
       {/* Card Image and Category */}
       <span className="relative bg-slate-100 dark:bg-slate-500 rounded-lg h-full w-2/5 overflow-hidden">
-        <span className="absolute bottom-1 right-1 z-[10] bg-slate-500/70 rounded-lg px-2 py-1 w-28 h-8 dark:bg-slate-700/70 overflow-hidden">
+        {/* Image Skeleton */}
+        <span className="absolute bottom-1 right-1 z-[10] bg-slate-500/70 rounded-lg px-2 py-1 w-24 h-6 dark:bg-slate-700/70 overflow-hidden">
+          {/* Category Skeleton */}
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-slate-500 via-slate-400 to-slate-500 bg-[length:200%_100%] animate-wave"></div>
         </span>
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-slate-100 via-slate-200 to-slate-100 dark:from-slate-500 dark:via-slate-600 dark:to-slate-500 bg-[length:200%_100%] animate-wave"></div>

@@ -36,7 +36,7 @@ const Card = ({ item }) => {
         </div>
 
         {/* Description */}
-        <p className="text-xs text-slate-6100 text-ellipsis overflow-hidden text-left leading-tight mt-1 h-fit max-h-[4lh] dark:text-slate-300">
+        <p className="text-sm text-slate-6100 text-ellipsis overflow-hidden text-left leading-tight mt-1 h-fit max-h-[4lh] dark:text-slate-300">
           {item.description}
         </p>
 

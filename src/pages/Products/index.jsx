@@ -14,7 +14,7 @@ const Products = () => {
   const [priceRange, setPriceRange] = useState({min: /* Search for item with the lowest price */ 0, max: /* Search for item with the highest price */ 100})
   const [loading, setLoading] = useState(items.length === 0)
 
-  const cardSkeletons = Array(4 /* Total Cards */)
+  const cardSkeletons = Array(12 /* Total Cards */)
     .fill(0)
     .map((_, index) => <CardSkeleton key={index} />)
 
