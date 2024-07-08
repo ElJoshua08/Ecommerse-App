@@ -6,7 +6,9 @@ const ContactUs = () => {
     <section className="relative z-0 flex w-full flex-shrink-0 flex-col items-center justify-start gap-4 bg-slate-200 px-4 py-24 *:z-10 dark:bg-slate-600">
       {/* Title */}
       <div className="flex flex-col items-center justify-center">
-        <p className="text-sm text-slate-100/80">Do you have any doubts?</p>
+        <p className="text-sm text-slate-700 dark:text-slate-100/80">
+          Do you have any doubts?
+        </p>
         <h1 className="bg-gradient-to-r from-secondary-dark to-primary-dark bg-clip-text text-center text-8xl font-bold leading-[0.8] text-transparent">
           Contact us!
         </h1>
@@ -56,7 +58,7 @@ const ContactCard = () => {
           type="text"
           name="name"
           id="name"
-          className="w-full rounded-md border-2 border-slate-400 p-1 text-lg text-slate-200 placeholder-slate-400 outline-none ring-transparent transition-colors duration-200 dark:border-transparent dark:bg-slate-700 dark:shadow-slate-600/50 dark:hover:border-slate-300 dark:focus:border-slate-300"
+          className="w-full rounded-md border-2 border-slate-400 p-1 text-lg text-slate-600 placeholder-slate-400 outline-none ring-transparent transition-colors duration-200 dark:border-transparent dark:bg-slate-700 dark:text-slate-200 dark:shadow-slate-600/50 dark:hover:border-slate-300 dark:focus:border-slate-300"
           placeholder="We should call you..."
           required
         />
@@ -70,7 +72,7 @@ const ContactCard = () => {
           type="email"
           name="email"
           id="email"
-          className="w-full rounded-md border-2 border-slate-400 p-1 text-lg text-slate-200 placeholder-slate-400 outline-none ring-transparent transition-colors duration-200 dark:border-transparent dark:bg-slate-700 dark:shadow-slate-600/50 dark:hover:border-slate-300 dark:focus:border-slate-300"
+          className="w-full rounded-md border-2 border-slate-400 p-1 text-lg text-slate-600 placeholder-slate-400 outline-none ring-transparent transition-colors duration-200 dark:border-transparent dark:bg-slate-700 dark:text-slate-200 dark:shadow-slate-600/50 dark:hover:border-slate-300 dark:focus:border-slate-300"
           placeholder="Tell us your email..."
           required
         />
@@ -85,7 +87,7 @@ const ContactCard = () => {
           type="text"
           name="content"
           id="content"
-          className="flex min-h-[7lh] w-full resize-none items-start justify-start rounded-md border-2 border-slate-400 p-1 text-start align-top text-lg text-slate-200 placeholder-slate-400 outline-none ring-transparent transition-colors duration-200 dark:border-transparent dark:bg-slate-700 dark:shadow-slate-600/50 dark:hover:border-slate-300 dark:focus:border-slate-300"
+          className="flex min-h-[7lh] w-full resize-none items-start justify-start rounded-md border-2 border-slate-400 p-1 text-start align-top text-lg text-slate-600 placeholder-slate-400 outline-none ring-transparent transition-colors duration-200 dark:border-transparent dark:bg-slate-700 dark:text-slate-200 dark:shadow-slate-600/50 dark:hover:border-slate-300 dark:focus:border-slate-300"
           required
         />
         {/* Max characters */}
@@ -98,16 +100,16 @@ const ContactCard = () => {
         disabled={isSubmitting}
       >
         <div
-          className={`relative overflow-hidden transition-all duration-200 ${isSubmitting ? 'w-0 h-0 translate-x-full' : 'max-w-full'}`}
+          className={`relative overflow-hidden transition-all duration-200 ${isSubmitting ? 'h-0 w-0 translate-x-full' : 'max-w-full'}`}
         >
           <p
-            className={`origin-right text-2xl transition-transform duration-200 ${isSubmitting ? 'scale-x-0' : 'scale-x-100'}`}
+            className={`origin-right text-2xl text-white transition-transform duration-200 ${isSubmitting ? 'scale-x-0' : 'scale-x-100'}`}
           >
             Send
           </p>
         </div>
         <FaArrowCircleRight
-          className={`text-3xl transition-all duration-200 ${isSubmitting ? 'animate-spin text-4xl' : ''}`}
+          className={`text-3xl text-white transition-all duration-200 ${isSubmitting ? 'animate-spin text-4xl' : ''}`}
         />
       </button>
     </form>

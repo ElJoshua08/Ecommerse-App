@@ -94,8 +94,8 @@ const InfiniteScrollTestimonials = ({ testimonials }) => {
   }, [])
 
   return (
-    <div className="mt-10 flex cursor-pointer select-none  justify-center overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)] gap-5">
-      <ul ref={ulRef} className="animate-infinite-scroll flex flex-row gap-5">
+    <div className="mt-10 flex cursor-pointer select-none  justify-center overflow-x-clip overflow-y-visible">
+      <ul ref={ulRef} className="animate-infinite-scroll flex flex-row gap-5 bg-transparent">
         {testimonials.map((testimonial, index) => (
           <TestimonialCard key={index} testimonial={testimonial} />
         ))}
@@ -106,7 +106,7 @@ const InfiniteScrollTestimonials = ({ testimonials }) => {
 
 const TestimonialCard = ({ testimonial }) => {
   return (
-    <li className="flex h-60 w-80 flex-shrink-0 flex-col items-center justify-start gap-4 rounded-lg border-2 border-slate-400 bg-slate-100 p-2 shadow-xl shadow-slate-300 dark:border-slate-600 dark:bg-slate-800 dark:shadow-slate-600/50">
+    <li className="flex h-60 w-80 flex-shrink-0 flex-col items-center justify-start gap-4 rounded-lg border-2 border-slate-400 bg-slate-200 p-2 shadow-xl shadow-slate-300 dark:border-slate-600 dark:bg-slate-800 dark:shadow-slate-600/50">
       {/* Name, avatar, and date */}
       <div className="flex w-full flex-row items-center justify-between gap-2">
         <img
