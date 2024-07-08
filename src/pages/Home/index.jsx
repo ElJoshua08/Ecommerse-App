@@ -23,7 +23,7 @@ const Home = () => {
 
   return (
     <>
-      <main className="flex flex-col items-center justify-center min-h-screen w-full">
+      <main className="flex flex-col min-h-screen w-full">
         {/* Main Content */}
         <Main />
 
@@ -33,7 +33,6 @@ const Home = () => {
         {/* Testimonials */}
         <Testimonials />
 
-        Contact Us
         <ContactUs />
       </main>
     </>

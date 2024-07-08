@@ -77,7 +77,7 @@ const Testimonials = () => {
       <img
         src={`/waves/${theme === 'dark' ? 'dark' : 'light'}/testimonialsBottom.png`}
         alt="wave"
-        className="absolute bottom-0 left-0 z-[1] w-full translate-y-full"
+        className="absolute bottom-1 left-0 z-[1] w-full translate-y-full"
       />
     </section>
   )
@@ -91,7 +91,6 @@ const InfiniteScrollTestimonials = ({ testimonials }) => {
     const duplicateUl = ul.cloneNode(true)
     duplicateUl.setAttribute('aria-hidden', 'true')
     ul.insertAdjacentElement('afterend', duplicateUl)
-    console.log('duplicating', ul, duplicateUl)
   }, [])
 
   return (
