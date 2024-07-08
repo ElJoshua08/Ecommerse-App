@@ -32,15 +32,15 @@ const Products = () => {
     }
   }, [items, setItems])
 
-  const onFilterSelect = (category) => {
+  const handleFilterSelect = (category) => {
     setFilter(category)
   }
 
-  const onRatingFilterSelect = (minRating) => {
+  const handleRatingSelect = (minRating) => {
     setRatingFilter(minRating)
   }
 
-  const onSearch = (value) => {
+  const handleSearch = (value) => {
     setSearch(value)
   }
 
@@ -62,9 +62,9 @@ const Products = () => {
   return (
     <div className="flex h-full w-full flex-row items-start justify-between pl-2">
       <Filters
-        onSearch={onSearch}
-        onFilterselect={onFilterSelect}
-        onRatingFilterSelect={onRatingFilterSelect}
+        handleSearch={handleSearch}
+        handleFilterSelect={handleFilterSelect}
+        handleRatingSelect={handleRatingSelect}
         filter={filter}
         ratingFilter={ratingFilter}
         priceRange={priceRange}

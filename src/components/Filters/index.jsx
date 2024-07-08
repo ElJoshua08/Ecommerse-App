@@ -5,9 +5,9 @@ import { MultiRangeSlider } from '@/components/MultiRangeSlider'
 import { useWindowSize } from '@/hooks/useWindowSize'
 
 const Filters = ({
-  onSearch,
-  onFilterSelect,
-  onRatingFilterSelect,
+  handleSearch,
+  handleFilterSelect,
+  handleRatingSelect,
   filter,
   ratingFilter,
   priceRange,
@@ -26,14 +26,13 @@ const Filters = ({
   const [openModal, setOpenModal] = useState(false)
   const [isInMobile, setIsInMobile] = useState(width < 480)
 
-
   //! PREVIUS CODE
   /*"flex md:max-h-screen md:w-4/12 md:max-w-56 flex-grow mdflex-col items-center justify-between gap-6 px-2 py-4"*/
 
   return !isInMobile ? (
     <div className="flex flex-col items-center justify-start gap-4">
       {/* Search Bar */}
-      <SearchBar onSearch={onSearch} className="mb-5 mt-5" />
+      <SearchBar handleSearch={handleSearch} className="mb-5 mt-5" />
       {/* Categories Wrapper*/}
       <CategoryFilter filterName="Categories">
         {/* Categories */}
@@ -43,7 +42,7 @@ const Filters = ({
               key={index}
               category={category}
               filter={filter}
-              onClick={() => onFilterSelect(category)}
+              onClick={() => handleFilterSelect(category)}
             />
           ))}
         </div>
@@ -53,7 +52,7 @@ const Filters = ({
       <CategoryFilter filterName="Min Rating">
         <div className="flex flex-row justify-center gap-2">
           {Array.from({ length: 5 }, (_, i) => (
-            <span key={i} onClick={() => onRatingFilterSelect(i + 1)}>
+            <span key={i} onClick={() => handleRatingSelect(i + 1)}>
               {ratingFilter >= i + 1 ? (
                 <FaStar className="cursor-pointer text-lg text-yellow-500" />
               ) : (
@@ -92,7 +91,7 @@ const CategoryButton = ({ category, filter, onClick }) => (
   <button
     className={`${
       filter === category
-        ? 'bg-slate-800 text-secondary-dark'
+        ? 'bg-slate-300 dark:bg-slate-800 text-secondary-dark'
         : 'text-slate-500 dark:text-slate-300 dark:hover:text-slate-400'
     } h-full rounded-sm px-2 text-left text-lg font-medium transition`}
     onClick={onClick}
