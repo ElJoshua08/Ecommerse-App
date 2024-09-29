@@ -4,7 +4,6 @@ import { fetchItems } from '@/api/fetchItems';
 import { WhyChooseUs } from './_components/WhyChooseUs';
 import { Main } from './_components/Main';
 import { Testimonials } from './_components/Testimonials';
-import { ContactUs } from './_components/ContactUs';
 
 const Home = () => {
   const { items, setItems } = useItemsStore();
@@ -32,8 +31,6 @@ const Home = () => {
 
         {/* Testimonials */}
         <Testimonials />
-
-        <ContactUs />
       </main>
     </>
   );

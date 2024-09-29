@@ -72,13 +72,6 @@ const Testimonials = () => {
       </div>
       {/* Testimonials */}
       <InfiniteScrollTestimonials testimonials={testimonials} />
-
-      {/* Section decoration */}
-      <img
-        src={`/waves/${theme === 'dark' ? 'dark' : 'light'}/testimonialsBottom.png`}
-        alt="wave"
-        className="absolute bottom-1 left-0 z-[1] w-full translate-y-full"
-      />
     </section>
   )
 }

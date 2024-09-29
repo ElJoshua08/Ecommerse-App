@@ -29,8 +29,10 @@ const Filters = ({
   //! PREVIUS CODE
   /*"flex md:max-h-screen md:w-4/12 md:max-w-56 flex-grow mdflex-col items-center justify-between gap-6 px-2 py-4"*/
 
-  return !isInMobile ? (
-    <div className="flex flex-col items-center justify-start gap-4">
+  return isInMobile ? (
+    <h1>Mobile</h1>
+  ) : (
+    <div className="sticky flex flex-col items-center justify-start gap-4 top-[70px]">
       {/* Search Bar */}
       <SearchBar handleSearch={handleSearch} className="mb-5 mt-5" />
       {/* Categories Wrapper*/}
@@ -71,8 +73,6 @@ const Filters = ({
         />
       </CategoryFilter>
     </div>
-  ) : (
-    <h1>Mobile</h1>
   )
 }
 
@@ -91,7 +91,7 @@ const CategoryButton = ({ category, filter, onClick }) => (
   <button
     className={`${
       filter === category
-        ? 'bg-slate-300 dark:bg-slate-800 text-secondary-dark'
+        ? 'bg-slate-300 text-secondary-dark dark:bg-slate-800'
         : 'text-slate-500 dark:text-slate-300 dark:hover:text-slate-400'
     } h-full rounded-sm px-2 text-left text-lg font-medium transition`}
     onClick={onClick}

@@ -54,7 +54,7 @@ const Card = ({ item }) => {
             }}
             className=" text-slate-400 rounded-md px-2 py-1 text-md tracking-wide right-[0.6rem] bottom-2 absolute font-semibold transition-colors duration-200 hover:text-slate-600 "
           >
-            In cart
+            In order
           </p>
         ) : (
           <button
